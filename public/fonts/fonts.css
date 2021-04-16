@@ -1,0 +1,20 @@
+@font-face {
+  font-family: "NeueMachina";
+  src: url("neuemachina-light-webfont.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NeueMachina";
+  src: url("neuemachina-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NeueMachina";
+  src: url("neuemachina-ultrabold-webfont.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
