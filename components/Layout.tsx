@@ -1,41 +1,49 @@
-import React, { ReactNode } from 'react'
-import Link from 'next/link'
-import Head from 'next/head'
+import React, { ReactNode } from "react";
+import Link from "next/link";
+import Head from "next/head";
+import TextBold from "./TextBold";
 
 type Props = {
-  children?: ReactNode
-  title?: string
-}
+  children?: ReactNode;
+  title?: string;
+};
 
-const Layout = ({ children, title = 'This is the default title' }: Props) => (
-  <div>
+const Layout = ({
+  children,
+  title = "The Algorithm Official Website",
+}: Props) => (
+  <div style={{}}>
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      <link rel="stylesheet" href="/fonts/fonts.css" />
     </Head>
     <header>
       <nav>
-        <Link href="/">
-          <a>Home</a>
-        </Link>{' '}
-        |{' '}
-        <Link href="/about">
-          <a>About</a>
-        </Link>{' '}
-        |{' '}
-        <Link href="/users">
-          <a>Users List</a>
-        </Link>{' '}
-        | <a href="/api/users">Users API</a>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+          }}
+        >
+          <Link href="/">
+            <TextBold>Home</TextBold>
+          </Link>{" "}
+          |{" "}
+          <Link href="/merch">
+            <TextBold>Merch</TextBold>
+          </Link>{" "}
+          |{" "}
+          <Link href="/discography">
+            <TextBold>Discography</TextBold>
+          </Link>
+        </div>
       </nav>
     </header>
     {children}
-    <footer>
-      <hr />
-      <span>I'm here to stay (Footer)</span>
-    </footer>
+    <footer></footer>
   </div>
-)
+);
 
-export default Layout
+export default Layout;

@@ -1,20 +1,33 @@
-import Link from "next/link";
 import Layout from "../components/Layout";
+import TextBold from "../components/TextBold";
+import TextLight from "../components/TextLight";
+import TextRegular from "../components/TextRegular";
 
 const IndexPage = () => (
   <Layout title="Home | The Algorithm Official Website">
-    <h1>Hello 👋</h1>
-    <p>
-      <Link href="/merch">
-        <a>Merch</a>
-      </Link>
-      <Link href="/discography">
-        <a>Discography</a>
-      </Link>
-      <Link href="/contact">
-        <a>Contact</a>
-      </Link>
-    </p>
+    <TextRegular style={{ marginBottom: 10 }}>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est voluptatum
+      esse perferendis animi rerum. Veritatis reprehenderit iure explicabo
+      ipsum, repudiandae, saepe numquam perferendis quod ipsa ullam iste cum,
+      voluptas amet!
+    </TextRegular>
+    <TextLight style={{ marginBottom: 10 }}>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi veniam
+      reiciendis esse, dolorem quam natus. In magni a optio assumenda error,
+      possimus reprehenderit dignissimos consequuntur expedita, iure esse totam
+      officia?
+    </TextLight>
+    <TextBold style={{ marginBottom: 10 }}>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt
+      distinctio qui necessitatibus reiciendis tempora, exercitationem
+      accusantium vitae id praesentium corrupti molestiae voluptatum aliquam
+      sed. Blanditiis voluptatum nulla ducimus temporibus sint!
+    </TextBold>
+    <style global jsx>{`
+      body {
+        background: #011212;
+      }
+    `}</style>
   </Layout>
 );
 
