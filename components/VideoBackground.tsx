@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useRef } from "react";
 import { TRANSITION_DELAY } from "../vars";
+import LogoSvg from "./LogoSvg";
 
 interface Props {
   src?: string;
@@ -8,6 +9,8 @@ interface Props {
 
 const VideoBackground: FunctionComponent<Props> = (props) => {
   const ref = useRef<HTMLVideoElement>(null);
+
+  return <LogoSvg />;
 
   return (
     <>

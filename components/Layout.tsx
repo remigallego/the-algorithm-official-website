@@ -33,6 +33,7 @@ const Layout = ({
         body {
           background: #011212;
           overflow-x: hidden;
+          overflow-y: hidden;
         }
         .bold-text,
         .light-text,
