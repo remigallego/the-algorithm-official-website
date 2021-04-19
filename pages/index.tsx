@@ -2,6 +2,7 @@ import Layout from "../components/Layout";
 import TextBold from "../components/TextBold";
 import TextLight from "../components/TextLight";
 import TextRegular from "../components/TextRegular";
+import VideoBackground from "../components/VideoBackground";
 
 const IndexPage = () => (
   <Layout title="Home | The Algorithm Official Website">
@@ -23,9 +24,11 @@ const IndexPage = () => (
       accusantium vitae id praesentium corrupti molestiae voluptatum aliquam
       sed. Blanditiis voluptatum nulla ducimus temporibus sint!
     </TextBold>
+    <VideoBackground src={"./videos/glitch.mp4"} />
     <style global jsx>{`
       body {
         background: #011212;
+        overflow-x: hidden;
       }
     `}</style>
   </Layout>
