@@ -1,13 +1,24 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useEffect, useRef } from "react";
 
 interface Props {
   src?: string;
+  playing: boolean;
 }
 
 const VideoBackground: FunctionComponent<Props> = (props) => {
+  const ref = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (props.playing) {
+      ref.current?.play();
+    } else {
+      if (ref.current) ref.current.currentTime = 0;
+      ref.current?.pause();
+    }
+  }, [props.playing]);
   return (
     <>
-      <video autoPlay={true} loop muted>
+      <video autoPlay={true} loop muted ref={ref}>
         <source src={props.src} />
       </video>
       <style jsx>{`

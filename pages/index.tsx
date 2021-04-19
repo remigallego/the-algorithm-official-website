@@ -24,7 +24,7 @@ const IndexPage = () => (
       accusantium vitae id praesentium corrupti molestiae voluptatum aliquam
       sed. Blanditiis voluptatum nulla ducimus temporibus sint!
     </TextBold>
-    <VideoBackground src={"./videos/glitch.mp4"} />
+    <VideoBackground src={"./videos/glitch.mp4"} playing />
     <style global jsx>{`
       body {
         background: #011212;
