@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from "react";
-import { useStyles } from "../hooks/useStyles";
 
 interface Props {
   style?: React.CSSProperties;
@@ -8,19 +7,22 @@ interface Props {
 
 const TextBold: FunctionComponent<Props> = (props) => {
   return (
-    <p style={{ ...styles.textStyle, ...props.style }}>{props.children}</p>
+    <>
+      <p {...props}>{props.children}</p>
+      <style jsx>{`
+        p {
+          font-size: 12px;
+          font-weight: bold;
+          font-family: "NeueMachina";
+          margin: 0;
+          padding: 0;
+          color: white;
+          display: inline-block;
+          letter-spacing: 0.12em;
+        }
+      `}</style>
+    </>
   );
 };
 
 export default TextBold;
-
-const styles = useStyles({
-  textStyle: {
-    fontWeight: "bold",
-    fontFamily: "NeueMachina",
-    color: "white",
-    fontSize: "12px",
-    margin: 0,
-    padding: 0,
-  },
-});

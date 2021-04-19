@@ -1,21 +1,14 @@
-import React, { FunctionComponent, useEffect, useRef } from "react";
+import React, { FunctionComponent, useRef } from "react";
+import { TRANSITION_DELAY } from "../vars";
 
 interface Props {
   src?: string;
-  playing: boolean;
+  blackened: boolean;
 }
 
 const VideoBackground: FunctionComponent<Props> = (props) => {
   const ref = useRef<HTMLVideoElement>(null);
 
-  useEffect(() => {
-    if (props.playing) {
-      ref.current?.play();
-    } else {
-      if (ref.current) ref.current.currentTime = 0;
-      ref.current?.pause();
-    }
-  }, [props.playing]);
   return (
     <>
       <video autoPlay={true} loop muted ref={ref}>
@@ -34,6 +27,8 @@ const VideoBackground: FunctionComponent<Props> = (props) => {
           -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
           background: #001526;
+          transition: opacity ${TRANSITION_DELAY}ms;
+          opacity: ${props.blackened ? 0.2 : 1};
         }
       `}</style>
     </>

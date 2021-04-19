@@ -1,16 +1,23 @@
-import Link from "next/link";
-import Layout from "../components/Layout";
+import { Container } from "next/app";
 
 const DiscographyPage = () => (
-  <Layout title="Discography | The Algorithm Official Website">
-    <h1>Discography</h1>
-    <p>This is the Discography page</p>
-    <p>
-      <Link href="/">
-        <a>Go home</a>
-      </Link>
-    </p>
-  </Layout>
+  <Container>
+    <div
+      style={{
+        marginLeft: 20,
+      }}
+    >
+      <h1 className="bold-text" style={{ fontSize: 30 }}>
+        Discography
+      </h1>
+      <h1 className="bold-text" style={{ fontSize: 30 }}>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
+        omnis quis porro quasi possimus obcaecati illum, autem alias deleniti
+        molestias sint eaque earum ut culpa quae deserunt aspernatur corporis
+        enim.
+      </h1>
+    </div>
+  </Container>
 );
 
 export default DiscographyPage;
