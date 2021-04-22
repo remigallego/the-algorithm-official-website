@@ -14,25 +14,17 @@ const Header: FunctionComponent<Props> = () => {
     <header>
       <nav>
         <div className="container">
-          <AppLink href={routes.home}>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-              }}
-            >
-              <div
-                id="threed"
-                style={{
-                  height: 100,
-                }}
-              >
-                <ThreeDModel />
-              </div>
-              <TextBold>THE ALGORITHM</TextBold>
-            </div>
-          </AppLink>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            <ThreeDModel />
+
+            <TextBold>THE ALGORITHM</TextBold>
+          </div>
           <div className="routes-container">
             <HeaderLink href={routes.home}>HOME</HeaderLink>
             <HeaderLink href={routes.merch}>MERCH</HeaderLink>

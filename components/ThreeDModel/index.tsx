@@ -5,7 +5,7 @@ import { SVGLoader } from "./SVGLoader";
 const ThreeDModel: FunctionComponent = () => {
   useEffect(() => {
     const innerWidth = 150;
-    const innerHeight = 100;
+    const innerHeight = 80;
     // --- Init threejs scene
     // ----------------------
 
@@ -78,7 +78,7 @@ const ThreeDModel: FunctionComponent = () => {
     const size = new THREE.Vector3();
     box.getSize(size);
 
-    const yOffset = size.y / -2;
+    const yOffset = size.y / -1.6;
     const xOffset = size.x / -2;
 
     // Offset all of group's elements, to center them
@@ -103,11 +103,31 @@ const ThreeDModel: FunctionComponent = () => {
 
     animate();
 
+    document.getElementById("threed").ondragstart = (e) => {
+      console.log("yo");
+      e.dataTransfer.setDragImage(new Image(), 0, 0);
+      e.dataTransfer.effectAllowed = "copyMove";
+    };
+    document.getElementById("threed").ondragleave = (e) => {
+      e.preventDefault();
+    };
+
+    document.getElementById("threed").ondrag = (e) => {
+      const _mouseX = (e.clientX / innerWidth) * 2 - 1;
+      const _mouseY = (e.clientY / innerHeight) * 2 - 1;
+      console.log("2");
+
+      svgGroup.rotation.y += _mouseX / 300;
+      svgGroup.rotation.x += _mouseY / 300;
+      e.preventDefault();
+    };
+
     window.onmousemove = (event) => {
       const _mouseX = (event.clientX / window.innerWidth) * 2 - 1;
       const _mouseY = event.clientY / 2 / window.innerHeight;
 
       requestAnimationFrame(() => renderer.render(scene, camera));
+
       /* svgGroup.rotation.y += _mouseX;
       svgGroup.rotation.x = _mouseY; */
       // calculate mouse position in normalized device coordinates
@@ -115,7 +135,20 @@ const ThreeDModel: FunctionComponent = () => {
     };
   }, []);
 
-  return <></>;
+  return (
+    <>
+      <div id="threed" draggable={true} onDragOver={console.log} />
+      <style jsx>{`
+        #threed {
+          height: 80px;
+          cursor: grabbing;
+        }
+        #threed:active {
+          cursor: grabbing;
+        }
+      `}</style>
+    </>
+  );
 };
 
 export default ThreeDModel;

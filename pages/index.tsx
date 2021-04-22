@@ -3,9 +3,7 @@ import LogoSvg from "../components/LogoSvg";
 
 const IndexPage = () => (
   <Container>
-    <div>
-      <LogoSvg />
-    </div>
+    <LogoSvg />
   </Container>
 );
 

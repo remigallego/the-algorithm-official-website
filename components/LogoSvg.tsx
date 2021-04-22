@@ -1,8 +1,5 @@
-import { useRouter } from "next/dist/client/router";
 import React, { FunctionComponent, useEffect, useState } from "react";
-import routes from "../routes";
 import math from "../utils/math";
-import { TRANSITION_DELAY } from "../vars";
 
 interface Props {}
 
@@ -12,7 +9,7 @@ const LogoSvg: FunctionComponent<Props> = (props) => {
   const [mouseY, setMouseY] = useState(0);
   const [height, setHeight] = useState();
   const [dashArray, setDashArray] = useState(90);
-  const [randomNumber, setRandomNumber] = useState(0);
+  const [randomNumber, setRandomNumber] = useState(math.randomInteger(0, 2));
 
   const setRandom = () => {
     let number = randomNumber;
@@ -94,7 +91,6 @@ const LogoSvg: FunctionComponent<Props> = (props) => {
           opacity: ${randomNumber === 1 ? 1 : 0.6};
         }
         .path-blue {
-          transform: translate(-2px);
           opacity: ${randomNumber === 2 ? 1 : 0.6};
         }
 
