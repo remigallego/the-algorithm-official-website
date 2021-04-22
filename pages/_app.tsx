@@ -2,6 +2,7 @@ import { AppProps } from "next/app";
 import { PageTransition } from "next-page-transitions";
 import Layout from "../components/Layout";
 import { TRANSITION_DELAY } from "../vars";
+import "./css/reset.css";
 
 function CustomApp({ Component, pageProps, router }: AppProps): JSX.Element {
   return (

@@ -10,8 +10,6 @@ interface Props {
 const VideoBackground: FunctionComponent<Props> = (props) => {
   const ref = useRef<HTMLVideoElement>(null);
 
-  return <LogoSvg />;
-
   return (
     <>
       <video autoPlay={true} loop muted ref={ref}>
@@ -19,7 +17,7 @@ const VideoBackground: FunctionComponent<Props> = (props) => {
       </video>
       <style jsx>{`
         video {
-          z-index: -1;
+          z-index: -2;
           height: 100%;
           width: 177.77777778vh;
           min-width: 100%;

@@ -1,6 +1,8 @@
 import React, { FunctionComponent } from "react";
 import routes from "../../routes";
 import AppLink from "../AppLink";
+import TextBold from "../TextBold";
+import ThreeDModel from "../ThreeDModel";
 import HeaderLink from "./HeaderLink";
 
 interface Props {
@@ -13,7 +15,23 @@ const Header: FunctionComponent<Props> = () => {
       <nav>
         <div className="container">
           <AppLink href={routes.home}>
-            <img src="./images/logoHeader.png" />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <div
+                id="threed"
+                style={{
+                  height: 100,
+                }}
+              >
+                <ThreeDModel />
+              </div>
+              <TextBold>THE ALGORITHM</TextBold>
+            </div>
           </AppLink>
           <div className="routes-container">
             <HeaderLink href={routes.home}>HOME</HeaderLink>

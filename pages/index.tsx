@@ -1,12 +1,11 @@
 import { Container } from "next/app";
+import LogoSvg from "../components/LogoSvg";
 
 const IndexPage = () => (
   <Container>
-    <div
-      style={{
-        marginLeft: 20,
-      }}
-    ></div>
+    <div>
+      <LogoSvg />
+    </div>
   </Container>
 );
 
