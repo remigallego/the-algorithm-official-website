@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useRef } from "react";
 import { TRANSITION_DELAY } from "../vars";
-import LogoSvg from "./LogoSvg";
 
 interface Props {
   src?: string;

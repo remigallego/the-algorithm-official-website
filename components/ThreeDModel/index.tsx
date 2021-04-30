@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
+import React, { FunctionComponent, useEffect } from "react";
 import * as THREE from "three";
 import { SVGLoader } from "./SVGLoader";
 
@@ -18,6 +18,7 @@ const ThreeDModel: FunctionComponent = () => {
     const camera = new THREE.PerspectiveCamera(80, ratio, 0.01, 1000);
     camera.position.z = 400;
 
+    //@ts-ignore
     document.getElementById("threed").appendChild(renderer.domElement);
 
     // Resize and update camera
@@ -41,6 +42,7 @@ const ThreeDModel: FunctionComponent = () => {
     // We need to load it separately, it is included in this pen's Settings > JavaScript
     // https://threejs.org/docs/#examples/en/loaders/SVGLoader
     const loader = new SVGLoader();
+    //@ts-ignore
     const svgData = loader.parse(svgMarkup);
 
     // Group we'll use for all SVG paths
@@ -51,10 +53,12 @@ const ThreeDModel: FunctionComponent = () => {
 
     const material = new THREE.MeshNormalMaterial();
     // Loop through all of the parsed paths
+    //@ts-ignore
     svgData.paths.forEach((path, i) => {
       const shapes = path.toShapes(true);
 
       // Each path has array of shapes
+      //@ts-ignore
       shapes.forEach((shape, j) => {
         // Finally we can take each shape and extrude it
         const geometry = new THREE.ExtrudeGeometry(shape, {
@@ -103,15 +107,19 @@ const ThreeDModel: FunctionComponent = () => {
 
     animate();
 
+    //@ts-ignore
     document.getElementById("threed").ondragstart = (e) => {
-      console.log("yo");
+      //@ts-ignore
       e.dataTransfer.setDragImage(new Image(), 0, 0);
+      //@ts-ignore
       e.dataTransfer.effectAllowed = "copyMove";
     };
+    //@ts-ignore
     document.getElementById("threed").ondragleave = (e) => {
       e.preventDefault();
     };
 
+    //@ts-ignore
     document.getElementById("threed").ondrag = (e) => {
       const _mouseX = (e.clientX / innerWidth) * 2 - 1;
       const _mouseY = (e.clientY / innerHeight) * 2 - 1;
@@ -122,10 +130,8 @@ const ThreeDModel: FunctionComponent = () => {
       e.preventDefault();
     };
 
+    //@ts-ignore
     window.onmousemove = (event) => {
-      const _mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-      const _mouseY = event.clientY / 2 / window.innerHeight;
-
       requestAnimationFrame(() => renderer.render(scene, camera));
 
       /* svgGroup.rotation.y += _mouseX;
