@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import routes from "../../routes";
-import AppLink from "../AppLink";
+import { HEADER_HEIGHT } from "../../vars";
 import TextBold from "../TextBold";
 import ThreeDModel from "../ThreeDModel";
 import HeaderLink from "./HeaderLink";
@@ -35,11 +35,12 @@ const Header: FunctionComponent<Props> = () => {
             .container {
               display: flex;
               justify-content: space-between;
-              margin: 4% 3%;
+              height: ${HEADER_HEIGHT}px;
             }
             .routes-container {
               display: flex;
               flex-direction: column;
+              padding: 20px;
             }
             img {
               width: calc(100% - 60px);

@@ -73,9 +73,10 @@ const Layout = ({
           background-repeat: no-repeat;
           background-attachment: fixed;
           overflow-x: hidden;
+          overflow-y: hidden;
         }
         .bold-text,
-        .light-text,
+        ± .light-text,
         .regular-text {
           font-size: 12px;
           font-family: "NeueMachina";
