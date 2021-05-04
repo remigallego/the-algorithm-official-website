@@ -26,7 +26,7 @@ const AnimatedLogo: FunctionComponent<Props> = () => {
         animatedYOffset={3.4}
         color={"#ff0404"}
         delay={0}
-        mouseWeight={0.05}
+        mouseWeight={0.09}
         style={{ width: "86%" }}
       />
       <LogoSvg
@@ -34,8 +34,8 @@ const AnimatedLogo: FunctionComponent<Props> = () => {
         animatedXOffset={-4.5}
         animatedYOffset={10.9}
         color={"#0443ff"}
-        mouseWeight={0.04}
-        delay={200}
+        mouseWeight={0.08}
+        delay={240}
         style={{ width: "90%" }}
       />
       <LogoSvg
@@ -43,8 +43,8 @@ const AnimatedLogo: FunctionComponent<Props> = () => {
         animatedXOffset={4.1}
         animatedYOffset={-8}
         color={"#04ff08"}
-        mouseWeight={0.03}
-        delay={300}
+        mouseWeight={0.05}
+        delay={380}
         style={{ width: "93%" }}
       />
       <LogoSvg
@@ -52,8 +52,8 @@ const AnimatedLogo: FunctionComponent<Props> = () => {
         animatedXOffset={-10.8}
         animatedYOffset={-7.7}
         color="yellow"
-        delay={400}
-        mouseWeight={0.01}
+        delay={580}
+        mouseWeight={0.04}
         style={{ width: "95%" }}
       />
       <style jsx>{`
