@@ -1,23 +1,17 @@
 import { Container } from "next/app";
+import CategoryLayout from "../components/CategoryLayout";
 
 const MerchPage = () => (
-  <Container>
+  <CategoryLayout pageNumber={"01"}>
     <div
       style={{
-        marginLeft: 20,
+        justifyContent: "center",
+        display: "flex",
       }}
     >
-      <h1 className="bold-text" style={{ fontSize: 30 }}>
-        Merch
-      </h1>
-      <h1 className="bold-text" style={{ fontSize: 30 }}>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam ducimus
-        praesentium tempore maxime animi aspernatur ratione inventore aut quos
-        laborum voluptas a eos, quas consequatur autem error accusamus sint
-        culpa!
-      </h1>
+      <h1 className="bold-text headline">MERCH</h1>
     </div>
-  </Container>
+    <style jsx>{``}</style>
+  </CategoryLayout>
 );
-
 export default MerchPage;

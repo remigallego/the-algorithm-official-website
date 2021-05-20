@@ -1,7 +1,9 @@
-import React, { ReactNode, useEffect } from "react";
+import React, { ReactNode } from "react";
 import Head from "next/head";
 import Header from "./Header";
-
+import Socials from "./Socials";
+import { useRouter } from "next/dist/client/router";
+import routes from "../routes";
 type Props = {
   children?: ReactNode;
   title?: string;
@@ -11,7 +13,7 @@ const Layout = ({
   children,
   title = "The Algorithm Official Website",
 }: Props) => {
-  useEffect(() => {}, []);
+  const route = useRouter();
   return (
     <div>
       <Head>
@@ -23,37 +25,7 @@ const Layout = ({
       </Head>
       <Header />
       {children}
-      <div
-        style={{
-          position: "absolute",
-          right: 20,
-          bottom: 20,
-          flexDirection: "column",
-          display: "flex",
-        }}
-      >
-        <img
-          className="social"
-          src="./images/youtube.svg"
-          onClick={() => window.open("https://youtube.com")}
-        />
-        <img
-          className="social"
-          src="./images/instagram.svg"
-          onClick={() => window.open("https://instagram.com")}
-        />
-        <img
-          className="social"
-          src="./images/twitter.svg"
-          onClick={() => window.open("https://twitter.com")}
-        />
-        <img
-          className="social"
-          src="./images/facebook.svg"
-          onClick={() => window.open("https://facebook.com")}
-        />
-      </div>
-      <footer></footer>
+      <Socials />
       <style global jsx>{`
         .social {
           cursor: pointer;
@@ -62,6 +34,7 @@ const Layout = ({
           margin-bottom: 10px;
         }
         body {
+          user-select: none;
           background: rgb(5, 5, 54);
           background: linear-gradient(
             180deg,
@@ -94,6 +67,10 @@ const Layout = ({
         }
         .regular-text {
           font-weight: normal;
+        }
+        .headline {
+          font-size: 64px;
+          text-shadow: 0px 0px 10px rgb(0 255 255 / 50%), 0px 0px 2px #fff;
         }
       `}</style>
     </div>

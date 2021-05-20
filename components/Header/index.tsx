@@ -15,6 +15,7 @@ const Header: FunctionComponent<Props> = () => {
       <nav>
         <div className="container">
           <div
+            className="logo-container"
             style={{
               display: "flex",
               flexDirection: "row",
@@ -22,7 +23,6 @@ const Header: FunctionComponent<Props> = () => {
             }}
           >
             <ThreeDModel />
-
             <TextBold>THE ALGORITHM</TextBold>
           </div>
           <div className="routes-container">
@@ -35,12 +35,18 @@ const Header: FunctionComponent<Props> = () => {
             .container {
               display: flex;
               justify-content: space-between;
+              z-index: 20222;
               height: ${HEADER_HEIGHT}px;
+            }
+
+            .logo-container {
+              z-index: 20;
             }
             .routes-container {
               display: flex;
               flex-direction: column;
               padding: 20px;
+              z-index: 20;
             }
             img {
               width: calc(100% - 60px);

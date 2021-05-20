@@ -1,8 +1,14 @@
-import React, { FunctionComponent, useEffect } from "react";
+import React, { FunctionComponent, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
+import logoMarkup from "./logoMarkup";
 import { SVGLoader } from "./SVGLoader";
 
 const ThreeDModel: FunctionComponent = () => {
+  const [isDragging, setIsDragging] = useState(false);
+  const [globalSvgGroup, setSvgGroup] = useState<any>();
+  const [mouseDownCoords, setMouseDownCoords] = useState({ x: 0, y: 0 });
+  const [interval, setAnimInterval] = useState<any>();
+
   useEffect(() => {
     const innerWidth = 150;
     const innerHeight = 80;
@@ -36,7 +42,7 @@ const ThreeDModel: FunctionComponent = () => {
     // --- Main part, load and parse SVG
     // ---------------------------------
 
-    const svgMarkup = document.getElementById("logo")?.outerHTML;
+    const svgMarkup = logoMarkup;
 
     // SVG Loader is not a part of the main three.js bundle
     // We need to load it separately, it is included in this pen's Settings > JavaScript
@@ -97,30 +103,38 @@ const ThreeDModel: FunctionComponent = () => {
     function animate() {
       renderer.render(scene, camera);
 
-      // Rotate out group
-      svgGroup.rotation.y += 0.005;
-
       requestAnimationFrame(animate);
     }
 
     renderer.render(scene, camera);
 
+    setSvgGroup(svgGroup);
+
     animate();
+
+    const _interval = setInterval(() => {
+      svgGroup.rotation.y += 0.0025;
+    }, 18);
+    setAnimInterval(_interval);
+
+    return;
 
     //@ts-ignore
     document.getElementById("threed").ondragstart = (e) => {
       //@ts-ignore
       e.dataTransfer.setDragImage(new Image(), 0, 0);
-      //@ts-ignore
-      e.dataTransfer.effectAllowed = "copyMove";
     };
+
+    //@ts-ignore
+    document.getElementById("threed").ondragenter = (e) => {};
+
     //@ts-ignore
     document.getElementById("threed").ondragleave = (e) => {
       e.preventDefault();
     };
 
     //@ts-ignore
-    document.getElementById("threed").ondrag = (e) => {
+    document.getElementById("threed").ondragover = (e) => {
       const _mouseX = (e.clientX / innerWidth) * 2 - 1;
       const _mouseY = (e.clientY / innerHeight) * 2 - 1;
       console.log("2");
@@ -143,7 +157,48 @@ const ThreeDModel: FunctionComponent = () => {
 
   return (
     <>
-      <div id="threed" draggable={true} onDragOver={console.log} />
+      <div
+        id="threed"
+        draggable={false}
+        onLoad={() => {}}
+        onMouseDown={(e) => {
+          setIsDragging(true);
+          setMouseDownCoords({
+            x: e.clientX - 75,
+            y: e.clientY - 40,
+          });
+        }}
+        onMouseMove={(e) => {
+          if (!isDragging) return;
+
+          const absoluteX = e.clientX - 75;
+          const absoluteY = e.clientY - 40;
+
+          const _mouseX = (absoluteX - mouseDownCoords.x) / 2;
+          const _mouseY = (absoluteY - mouseDownCoords.y) / 2;
+
+          if (interval !== null) {
+            clearInterval(interval);
+          }
+          globalSvgGroup.rotation.y += _mouseX / 500;
+          globalSvgGroup.rotation.x += _mouseY / 500;
+
+          const _interval = setInterval(() => {
+            globalSvgGroup.rotation.y += _mouseX / 500;
+            globalSvgGroup.rotation.x += _mouseY / 500;
+          }, 18);
+
+          setAnimInterval(_interval);
+
+          e.preventDefault();
+        }}
+        onMouseUp={(e) => {
+          setIsDragging(false);
+        }}
+        onMouseLeave={(e) => {
+          setIsDragging(false);
+        }}
+      />
       <style jsx>{`
         #threed {
           height: 80px;
@@ -158,3 +213,6 @@ const ThreeDModel: FunctionComponent = () => {
 };
 
 export default ThreeDModel;
+
+// -----150-----
+// -75    0   75

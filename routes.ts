@@ -3,4 +3,5 @@ export default {
   merch: "/merch",
   discography: "/discography",
   about: "/about",
+  logofull: "/logofull",
 };

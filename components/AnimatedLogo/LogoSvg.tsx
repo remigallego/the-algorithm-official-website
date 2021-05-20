@@ -58,7 +58,7 @@ const LogoSvg: FunctionComponent<Props> = (props) => {
         yOffset={props.animatedYOffset}
       >
         <animated.svg
-          id="logo2"
+          id="logo"
           viewBox="0 0 628 414.3"
           fill="none"
           style={{

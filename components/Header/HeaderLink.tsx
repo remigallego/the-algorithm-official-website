@@ -20,7 +20,7 @@ const HeaderLink: FunctionComponent<Props> = (props) => {
           display: inline-block;
           letter-spacing: 0.12em;
           text-decoration: none;
-          margin-bottom: 3px;
+          margin-bottom: 7px;
           align-self: flex-end;
           color: ${props.href === router.route ? "#ff0" : "white"}};
         }
