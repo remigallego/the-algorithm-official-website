@@ -1,16 +1,7 @@
-import { Container } from "next/app";
 import CategoryLayout from "../components/CategoryLayout";
 
 const AboutPage = () => (
-  <CategoryLayout pageNumber={"03"}>
-    <div
-      style={{
-        justifyContent: "center",
-        display: "flex",
-      }}
-    >
-      <h1 className="bold-text headline">ABOUT</h1>
-    </div>
+  <CategoryLayout pageNumber={"03"} title={"ABOUT"}>
     <style jsx>{``}</style>
   </CategoryLayout>
 );

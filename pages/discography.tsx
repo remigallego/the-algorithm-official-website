@@ -1,19 +1,10 @@
 import CategoryLayout from "../components/CategoryLayout";
 
 const DiscographyPage = () => (
-  <CategoryLayout pageNumber={"02"}>
-    <div
-      style={{
-        justifyContent: "center",
-        display: "flex",
-      }}
-    >
-      <h1 className="bold-text headline">DISCOGRAPHY</h1>
-    </div>
+  <CategoryLayout pageNumber={"02"} title={"DISCOGRAPHY"}>
     <h1
       className="regular-text"
       style={{
-        marginLeft: 80,
         marginTop: 20,
       }}
     >
