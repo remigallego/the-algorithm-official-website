@@ -8,10 +8,11 @@ interface Props {
 
 const HeaderLink: FunctionComponent<Props> = (props) => {
   const router = useRouter();
+  const active = props.href === router.route;
   return (
     <>
       <Link passHref={true} href={props.href}>
-        <a className="bold-text">{props.children}</a>
+        <a className={`bold-text ${active && "active"}`}>{props.children}</a>
       </Link>
       <style jsx>{`
         a {
@@ -22,9 +23,12 @@ const HeaderLink: FunctionComponent<Props> = (props) => {
           text-decoration: none;
           margin-bottom: 7px;
           align-self: flex-end;
-          color: ${props.href === router.route ? "#ff0" : "white"}};
         }
-        a:focus,
+        .active {
+          color: #00bfbf;
+          text-shadow: 0px 0px 5px #00bfbf;
+          letter-spacing: 0.13em;
+        }
         a:hover {
           color: #ff0;
           letter-spacing: 0.13em;

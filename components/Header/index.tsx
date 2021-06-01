@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react";
+import useMediaQueries from "../../hooks/useMediaQueries";
 import routes from "../../routes";
 import { HEADER_HEIGHT } from "../../vars";
 import TextBold from "../TextBold";
@@ -10,6 +11,41 @@ interface Props {
 }
 
 const Header: FunctionComponent<Props> = () => {
+  const { smallScreen } = useMediaQueries();
+
+  const renderMenu = () => {
+    return (
+      <>
+        {!smallScreen && (
+          <div className="routes-container">
+            <HeaderLink href={routes.home}>HOME</HeaderLink>
+            <HeaderLink href={routes.merch}>MERCH</HeaderLink>
+            <HeaderLink href={routes.discography}>DISCOGRAPHY</HeaderLink>
+            <HeaderLink href={routes.about}>ABOUT</HeaderLink>
+          </div>
+        )}
+        {smallScreen && (
+          <div className="routes-container">
+            <img
+              src={`./images/hamburger.png`}
+              style={{
+                width: 40,
+                height: 40,
+              }}
+            />
+          </div>
+        )}
+        <style jsx>{`
+          .routes-container {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            z-index: 20;
+          }
+        `}</style>
+      </>
+    );
+  };
   return (
     <header>
       <nav>
@@ -25,12 +61,7 @@ const Header: FunctionComponent<Props> = () => {
             <ThreeDModel />
             <TextBold>THE ALGORITHM</TextBold>
           </div>
-          <div className="routes-container">
-            <HeaderLink href={routes.home}>HOME</HeaderLink>
-            <HeaderLink href={routes.merch}>MERCH</HeaderLink>
-            <HeaderLink href={routes.discography}>DISCOGRAPHY</HeaderLink>
-            <HeaderLink href={routes.about}>ABOUT</HeaderLink>
-          </div>
+          {renderMenu()}
           <style jsx>{`
             .container {
               display: flex;
@@ -42,12 +73,7 @@ const Header: FunctionComponent<Props> = () => {
             .logo-container {
               z-index: 20;
             }
-            .routes-container {
-              display: flex;
-              flex-direction: column;
-              padding: 20px;
-              z-index: 20;
-            }
+
             img {
               width: calc(100% - 60px);
               max-width: 360px;
