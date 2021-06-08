@@ -71,6 +71,17 @@ const Layout = ({
           font-size: 64px;
           text-shadow: 0px 0px 10px rgb(0 255 255 / 50%), 0px 0px 2px #fff;
         }
+
+        body::-webkit-scrollbar {
+          width: 10px;
+        }
+        body::-webkit-scrollbar-track {
+          background: rgb(5, 5, 54);
+        }
+        body::-webkit-scrollbar-thumb {
+          background-color: #00bfbf;
+          border-radius: 5px;
+        }
       `}</style>
     </div>
   );
