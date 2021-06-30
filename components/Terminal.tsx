@@ -1,39 +1,48 @@
 import React from "react";
 
-const Terminal = () => {
-  /*   const [terminalLineData, setTerminalLineData] = useState([
-    { type: "output", value: "Welcome to the React Terminal UI Demo!" },
-    { type: "input", value: "Some previous input received" },
-  ]); */
+interface Props {
+  lines: string[];
+}
+
+const Terminal = (props: Props) => {
   return (
     <>
       <div className="container">
-        <p className="regular-text title">compiler optimization techniques</p>
-        <p className="regular-text date">02/11/2018</p>
-        <p className="regular-text">1. Cluster</p>
-        <p className="regular-text">2. Fragmentation</p>
-        <p className="regular-text">3. Superscalar</p>
-        <p className="regular-text">4. Binary Space</p>
-        <p className="regular-text">
-          5. Sentinel Node
-          <span className="blinking-block">▋</span>
-        </p>
+        {props.lines.map((line, idx) => {
+          if (line.length === 0) return <br />;
+          return (
+            <p
+              className={`line ${
+                idx === 0 ? "bold-text title" : "regular-text"
+              }`}
+            >
+              {line}
+              {idx === props.lines.length - 1 && (
+                <span className="blinking-block">▋</span>
+              )}
+            </p>
+          );
+        })}
       </div>
       <style jsx>{`
         .container {
-          background-color: rgba(0, 0, 0, 0.6);
-          width: 340px;
+          background-color: rgba(0, 10, 50, 0);
+          width: 520px;
           padding: 20px 40px;
         }
-        .title,
-        .date {
+        .line {
           display: block;
-          margin-bottom: 20px;
+          font-size: 16px;
+          text-shadow: 0px 0px 10px rgb(0 255 50 / 10%), 0px 0px 3px #11f24a;
+        }
+        .title {
+          font-size: 17px;
         }
         p {
-          color: white;
+          color: #11f24a;
           letter-spacing: 0.15em;
           font-size: 22px;
+          margin-bottom: 4px;
         }
         .blinking-block {
           animation: 1s blink infinite;
