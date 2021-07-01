@@ -8,7 +8,7 @@ const Socials: FunctionComponent<Props> = () => {
   return (
     <div
       style={{
-        position: "absolute",
+        position: "fixed",
         right: 20,
         bottom: 20,
         flexDirection: "column",
