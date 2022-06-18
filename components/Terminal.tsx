@@ -1,4 +1,5 @@
 import React from "react";
+import { MEDIUM_BREAKPOINT, SMALL_BREAKPOINT } from "../vars";
 
 interface Props {
   lines: string[];
@@ -13,7 +14,7 @@ const Terminal = (props: Props) => {
           return (
             <p
               className={`line ${
-                idx === 0 ? "bold-text title" : "regular-text"
+                idx === 0 ? "bold-text title" : "regular-text regular-line"
               }`}
             >
               {line}
@@ -27,16 +28,24 @@ const Terminal = (props: Props) => {
       <style jsx>{`
         .container {
           background-color: rgba(0, 10, 50, 0);
-          width: 520px;
+          border: 2px solid #11f24a;
+          border-radius: 5px;
           padding: 20px 40px;
+          -webkit-filter: url(#chromaticabberration);
+
         }
         .line {
           display: block;
-          font-size: 16px;
           text-shadow: 0px 0px 10px rgb(0 255 50 / 10%), 0px 0px 3px #11f24a;
         }
+        .regular-line {
+          font-size: 4vw;
+          margin-left: 20px;
+          text-align: center;
+        }
         .title {
-          font-size: 17px;
+          font-size: 10vw;
+          text-align: center;
         }
         p {
           color: #11f24a;
@@ -47,6 +56,27 @@ const Terminal = (props: Props) => {
         .blinking-block {
           animation: 1s blink infinite;
         }
+
+        @media (min-width: ${SMALL_BREAKPOINT}px) {
+          .regular-line {
+            font-size: 3vw;
+          }
+          .title {
+            font-size: 5vw;
+          }
+        }
+        @media (min-width: ${MEDIUM_BREAKPOINT}px) {
+          .regular-line {
+            font-size: 26px;
+            text-align: left;
+            margin-left: 0px;
+          }
+          .title {
+            font-size: 32px;
+            text-align: left;
+          }
+        }
+
         @keyframes blink {
           0% {
             opacity: 1;

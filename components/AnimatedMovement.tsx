@@ -3,11 +3,13 @@ import React, { FunctionComponent } from "react";
 interface Props {
   xOffset: number;
   yOffset: number;
+  key: string;
 }
 
 const AnimatedMovement: FunctionComponent<Props> = (props) => {
   return (
     <div
+      key={props.key}
       className="transformY"
       style={{
         width: "100%",
@@ -26,6 +28,8 @@ const AnimatedMovement: FunctionComponent<Props> = (props) => {
           div {
           }
           .transformX {
+            width: 100%;
+            height: 100%;
             animation: movementX 4s ease-in-out alternate forwards infinite;
           }
           .transformY {

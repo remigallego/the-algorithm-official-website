@@ -10,14 +10,16 @@
   "dependencies": {
     "@reach/window-size": "^0.15.0",
     "@react-hook/mouse-position": "^4.1.0",
+    "dot-audio": "^0.3.2",
     "next": "latest",
     "next-page-transitions": "*",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-flip-toolkit": "^7.0.13",
     "react-responsive": "^8.2.0",
-    "react-spring": "^9.1.2",
-    "three": "^0.127.0"
+    "react-spring": "9.2.0-beta.0",
+    "three": "^0.127.0",
+    "usehooks-ts": "^2.5.4"
   },
   "devDependencies": {
     "@types/node": "^12.20.10",

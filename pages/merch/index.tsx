@@ -1,8 +1,8 @@
-import { Container } from "next/app";
-import CategoryLayout from "../components/CategoryLayout";
+import { NextPage } from "next";
+import CategoryLayout from "../../components/CategoryLayout";
 
-const MerchPage = () => (
-  <CategoryLayout pageNumber={"01"}>
+const MerchPage: NextPage = () => (
+  <CategoryLayout pageNumber={"01"} title={""}>
     <div
       style={{
         justifyContent: "center",

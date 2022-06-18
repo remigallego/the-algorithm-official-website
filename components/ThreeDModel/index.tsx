@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 import * as THREE from "three";
 import logoMarkup from "./logoMarkup";
 import { SVGLoader } from "./SVGLoader";
@@ -10,8 +10,8 @@ const ThreeDModel: FunctionComponent = () => {
   const [interval, setAnimInterval] = useState<any>();
 
   useEffect(() => {
-    const innerWidth = 150;
-    const innerHeight = 80;
+    const innerWidth = 300;
+    const innerHeight = 160;
     // --- Init threejs scene
     // ----------------------
 
@@ -192,16 +192,15 @@ const ThreeDModel: FunctionComponent = () => {
 
           e.preventDefault();
         }}
-        onMouseUp={(e) => {
+        onMouseUp={() => {
           setIsDragging(false);
         }}
-        onMouseLeave={(e) => {
+        onMouseLeave={() => {
           setIsDragging(false);
         }}
       />
       <style jsx>{`
         #threed {
-          height: 80px;
           cursor: grabbing;
         }
         #threed:active {

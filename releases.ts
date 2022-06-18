@@ -15,6 +15,13 @@ export interface Release {
 
 const RELEASES: Release[] = [
   {
+    name: "Data Renaissance",
+    cover: "./images/releases/datarenaissance.jpg",
+    type: ReleaseType.Album,
+    date: "03/06/2022",
+    tracklist: ["Interrupt Handler"],
+  },
+  {
     name: "Segmentation Fault",
     cover: "./images/releases/segmentation.jpg",
     type: ReleaseType.Single,

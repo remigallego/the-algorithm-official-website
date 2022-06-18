@@ -2,8 +2,7 @@ import React, { ReactNode } from "react";
 import Head from "next/head";
 import Header from "./Header";
 import Socials from "./Socials";
-import { useRouter } from "next/dist/client/router";
-import routes from "../routes";
+
 type Props = {
   children?: ReactNode;
   title?: string;
@@ -13,7 +12,6 @@ const Layout = ({
   children,
   title = "The Algorithm Official Website",
 }: Props) => {
-  const route = useRouter();
   return (
     <div>
       <Head>
@@ -36,11 +34,7 @@ const Layout = ({
         body {
           user-select: none;
           background: rgb(5, 5, 54);
-          background: linear-gradient(
-            180deg,
-            rgba(5, 5, 54, 1) 5%,
-            rgba(1, 18, 18, 1) 100%
-          );
+
           height: 100%;
           margin: 0;
           background-repeat: no-repeat;
@@ -50,7 +44,7 @@ const Layout = ({
         .bold-text,
         ± .light-text,
         .regular-text {
-          font-size: 12px;
+          font-size: 28px;
           font-family: "NeueMachina";
           margin: 0;
           padding: 0;
@@ -71,8 +65,21 @@ const Layout = ({
           font-size: 64px;
           text-shadow: 0px 0px 10px rgb(0 255 255 / 50%), 0px 0px 2px #fff;
         }
+        .opacity-fadein {
+          animation: fadeIn 2.9s 1.5s cubic-bezier(0.2, 0.14, 0, 1.1) forwards;
+          opacity: 0;
+        }
+
+        .slide-and-fade-animation {
+          width: inherit;
+          height: inherit;
+          opacity: 0;
+          animation: fadeIn 0.4s 0.4s ease-in-out forwards,
+            slide 1.1s 0.4s cubic-bezier(0.17, 0.67, 0.36, 1.09) forwards;
+        }
 
         body::-webkit-scrollbar {
+          display: none;
           width: 10px;
         }
         body::-webkit-scrollbar-track {
@@ -81,6 +88,33 @@ const Layout = ({
         body::-webkit-scrollbar-thumb {
           background-color: #00bfbf;
           border-radius: 5px;
+        }
+
+        /* variables */
+        * {
+          --small-breakpoint: 600px;
+          --medium-breakpoint: 900px;
+          --large-breakpoint: 1200px;
+        }
+
+        .css-selector {
+        }
+
+        @keyframes fadeIn {
+          0% {
+            opacity: 0;
+          }
+          100% {
+            opacity: 1;
+          }
+        }
+        @keyframes slide {
+          0% {
+            transform: translateX(40px);
+          }
+          100% {
+            transform: translateY(0);
+          }
         }
       `}</style>
     </div>

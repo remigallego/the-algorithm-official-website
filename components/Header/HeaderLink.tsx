@@ -4,6 +4,7 @@ import React, { FunctionComponent } from "react";
 
 interface Props {
   href: string;
+  className?: string;
 }
 
 const HeaderLink: FunctionComponent<Props> = (props) => {
@@ -12,7 +13,9 @@ const HeaderLink: FunctionComponent<Props> = (props) => {
   return (
     <>
       <Link passHref={true} href={props.href}>
-        <a className={`bold-text ${active && "active"}`}>{props.children}</a>
+        <a className={`bold-text ${active && "active"} ${props.className}`}>
+          {props.children}
+        </a>
       </Link>
       <style jsx>{`
         a {
@@ -20,9 +23,10 @@ const HeaderLink: FunctionComponent<Props> = (props) => {
           transition: all 150ms ease-out;
           display: inline-block;
           letter-spacing: 0.12em;
+          margin-right: 6px;
           text-decoration: none;
-          margin-bottom: 7px;
           align-self: flex-end;
+          opacity: 1;
         }
         .active {
           color: #00bfbf;
