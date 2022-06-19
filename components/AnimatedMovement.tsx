@@ -3,7 +3,7 @@ import React, { FunctionComponent } from "react";
 interface Props {
   xOffset: number;
   yOffset: number;
-  key: string;
+  key?: string;
 }
 
 const AnimatedMovement: FunctionComponent<Props> = (props) => {

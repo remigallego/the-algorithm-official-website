@@ -15,7 +15,7 @@ import {
 
 const IndexPage: NextPage = () => {
   const [showLogo, setShowLogo] = useState(false);
-  const [rotateState, setRotateState] = useState({ ax: 0, ay: 0 });
+  const [rotateState] = useState({ ax: 0, ay: 0 });
   const windowSize = useWindowSize();
   const ref = useRef(null);
 
@@ -42,7 +42,7 @@ const IndexPage: NextPage = () => {
     <div
       ref={ref}
       className="container"
-      onMouseMove={(e) => {
+      onMouseMove={() => {
         /*   var ax = (windowSize.width / 2 - e.pageX) / 70;
         var ay = (windowSize.height / 2 - e.pageY) / 60;
         setRotateState({ ax, ay }); */
@@ -51,7 +51,7 @@ const IndexPage: NextPage = () => {
       <div className="terminal-container">
         <FadeInBlink delay={0.8}>
           <Terminal lines={["NEW ALBUM OUT NOW", "DATA RENAISSANCE"]} />
-          {windowSize.width >= MEDIUM_BREAKPOINT && (
+          {(windowSize.width || 0) >= MEDIUM_BREAKPOINT && (
             <>
               {" "}
               <div
@@ -118,7 +118,7 @@ const IndexPage: NextPage = () => {
       </div>
 
       <div>
-        {windowSize.width < MEDIUM_BREAKPOINT && (
+        {(windowSize.width || 0)  < MEDIUM_BREAKPOINT && (
           <div
             style={{
               display: "flex",
