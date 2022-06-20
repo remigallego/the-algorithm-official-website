@@ -15,7 +15,6 @@ import {
 
 const IndexPage: NextPage = () => {
   const [showLogo, setShowLogo] = useState(false);
-  const [rotateState] = useState({ ax: 0, ay: 0 });
   const windowSize = useWindowSize();
   const ref = useRef(null);
 
@@ -23,33 +22,10 @@ const IndexPage: NextPage = () => {
     setShowLogo(true);
   }, 800);
 
-  const rotate =
-    "rotateY(" +
-    rotateState.ax +
-    "deg) rotateX(" +
-    rotateState.ay +
-    "deg);-webkit-transform: rotateY(" +
-    rotateState.ax +
-    "deg) rotateX(" +
-    rotateState.ay +
-    "deg);-moz-transform: rotateY(" +
-    rotateState.ax +
-    "deg) rotateX(" +
-    rotateState.ay +
-    "deg)";
-
   return (
-    <div
-      ref={ref}
-      className="container"
-      onMouseMove={() => {
-        /*   var ax = (windowSize.width / 2 - e.pageX) / 70;
-        var ay = (windowSize.height / 2 - e.pageY) / 60;
-        setRotateState({ ax, ay }); */
-      }}
-    >
+    <div ref={ref} className="container" onMouseMove={() => {}}>
       <div className="terminal-container">
-        <FadeInBlink delay={0.8}>
+        <FadeInBlink delay={0.2}>
           <Terminal lines={["NEW ALBUM OUT NOW", "DATA RENAISSANCE"]} />
           {(windowSize.width || 0) >= MEDIUM_BREAKPOINT && (
             <>
@@ -98,10 +74,10 @@ const IndexPage: NextPage = () => {
             </AnimatedMovement>
           </div>
         )}
-        <div className="slide-and-fade-animation rotate">
+        <div className="slide-and-fade-animation">
           <AnimatedMovement key={"cover"} xOffset={3} yOffset={7}>
             <div
-              className="rotate"
+              className="cover"
               style={{
                 transformStyle: "preserve-3d",
                 width: "100%",
@@ -111,6 +87,9 @@ const IndexPage: NextPage = () => {
               <Image
                 src={"/images/releases/datarenaissance.jpg"}
                 layout="fill"
+                style={{
+                  borderRadius: 10,
+                }}
               />
             </div>
           </AnimatedMovement>
@@ -118,7 +97,7 @@ const IndexPage: NextPage = () => {
       </div>
 
       <div>
-        {(windowSize.width || 0)  < MEDIUM_BREAKPOINT && (
+        {(windowSize.width || 0) < MEDIUM_BREAKPOINT && (
           <div
             style={{
               display: "flex",
@@ -128,7 +107,7 @@ const IndexPage: NextPage = () => {
               height: 30,
             }}
           >
-            <FadeInBlink delay={1.4}>
+            <FadeInBlink delay={0.4}>
               <div
                 className={"listen-container slide-and-fade-animation"}
                 style={{
@@ -155,7 +134,7 @@ const IndexPage: NextPage = () => {
       <style jsx>{`
         .container {
           width: 100%;
-          margin-top: 2vw;
+          transform: translateY(-30px);
           box-sizing: border-box;
           height: ${(windowSize.height || 0) - HEADER_HEIGHT}px;
           display: flex;
@@ -168,6 +147,7 @@ const IndexPage: NextPage = () => {
           height: 80vw;
           width: 80vw;
         }
+
         p {
           color: white;
         }
@@ -201,9 +181,50 @@ const IndexPage: NextPage = () => {
         .terminal-container {
           width: 80vw;
         }
-        .rotate {
-          transform: ${rotate};
+
+        .cover {
+          overflow: hidden;
+          box-sizing: border-box;
+          border-radius: 5px;
         }
+        .cover:before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+          box-shadow: 0px 2px 522px rgba(255, 255, 255, 0.8);
+          background: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0.4) 0%,
+            rgba(255, 255, 255, 0.4) 77%,
+            rgba(255, 255, 255, 0.8) 92%,
+            rgba(255, 255, 255, 0) 100%
+          );
+          width: 200%;
+          transform: rotateZ(45deg) translateY(200px);
+          height: 100px;
+          z-index: 20;
+          animation: 9s shine infinite cubic-bezier(0.445, 0.05, 0.55, 0.95);
+          opacity: 0.2;
+        }
+        @keyframes shine {
+          0% {
+            transform: rotateZ(48deg) translateY(1200px);
+            opacity: 0.1;
+          }
+          14% {
+            opacity: 0.2;
+          }
+          20% {
+            transform: rotateZ(38deg) translateY(-400px);
+            opacity: 0.1;
+          }
+          100% {
+            transform: rotateZ(42deg) translateY(-400px);
+            opacity: 0.1;
+          }
+        }
+
         @media (min-width: ${SMALL_BREAKPOINT}px) {
           .cover-container {
             transform: translate(0%, -2%);

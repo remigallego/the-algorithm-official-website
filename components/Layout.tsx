@@ -34,7 +34,6 @@ const Layout = ({
         body {
           user-select: none;
           background: rgb(5, 5, 54);
-
           height: 100%;
           margin: 0;
           background-repeat: no-repeat;

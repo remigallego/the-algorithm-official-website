@@ -67,12 +67,12 @@ const Terminal = (props: Props) => {
         }
         @media (min-width: ${MEDIUM_BREAKPOINT}px) {
           .regular-line {
-            font-size: 26px;
+            font-size: 32px;
             text-align: left;
             margin-left: 0px;
           }
           .title {
-            font-size: 32px;
+            font-size: 36px;
             text-align: left;
           }
         }

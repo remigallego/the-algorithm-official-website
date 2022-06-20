@@ -1,5 +1,4 @@
 import { useSpring } from "@react-spring/core";
-import { animated } from "@react-spring/web";
 import React, { FunctionComponent, useEffect } from "react";
 import useMediaQueries from "../hooks/useMediaQueries";
 
@@ -9,12 +8,9 @@ interface Props {
   title: string;
 }
 
-const CategoryLayout: FunctionComponent<Props> = ({
-  children,
-  pageNumber,
-  title,
-}) => {
-  const [styleArrow, animateArrow] = useSpring(() => ({}));
+const CategoryLayout: FunctionComponent<Props> = ({ children, title }) => {
+  //@ts-ignore
+  const [_d, animateArrow] = useSpring(() => ({}));
 
   const { extraBigScreen, bigScreen, smallScreen } = useMediaQueries();
 
@@ -46,12 +42,7 @@ const CategoryLayout: FunctionComponent<Props> = ({
   const renderDesignOrnements = () => {
     return (
       <>
-        {bigScreen && (
-          <div>
-            <h1 className="bold-text headline number">{pageNumber}</h1>
-          </div>
-        )}
-        {!smallScreen && (
+        {/*  {!smallScreen && (
           <img src="./images/line.svg" className="line antislash" />
         )}
         {extraBigScreen && (
@@ -74,15 +65,7 @@ const CategoryLayout: FunctionComponent<Props> = ({
               stroke-linecap="round"
             ></path>
           </svg>
-        )}
-        {!smallScreen && (
-          <div className="arrow-down">
-            <animated.img
-              src="./images/arrowDown.svg"
-              style={{ ...styleArrow }}
-            />
-          </div>
-        )}
+        )} */}
         <style jsx>{`
           .line {
             position: absolute;

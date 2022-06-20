@@ -23,7 +23,7 @@ const HeaderLink: FunctionComponent<Props> = (props) => {
           transition: all 150ms ease-out;
           display: inline-block;
           letter-spacing: 0.12em;
-          margin-right: 6px;
+          margin-right: 22px;
           text-decoration: none;
           align-self: flex-end;
           opacity: 1;
