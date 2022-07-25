@@ -6,7 +6,7 @@ import {
   MEDIUM_BREAKPOINT,
   SMALL_BREAKPOINT,
 } from "../../vars";
-
+import DataRenaissanceCover from "../../public/images/releases/datarenaissance.jpg";
 interface Props {
   children?: React.ReactNode;
   showLogo: boolean;
@@ -43,8 +43,12 @@ const Cover: FunctionComponent<Props> = (props) => {
             }}
           >
             <Image
-              src={"/images/releases/datarenaissance.jpg"}
+              src={DataRenaissanceCover}
+              onLoadingComplete={e => {
+                console.log('yo')
+              }}
               layout="fill"
+              priority={true}
               style={{
                 borderRadius: 10,
               }}
