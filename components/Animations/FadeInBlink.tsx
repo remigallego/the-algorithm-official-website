@@ -1,32 +1,60 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useState } from "react";
+import useTimeout from "../../hooks/useTimeout";
 import randomInteger from "../../utils/math";
 
 interface Props {
   children: React.ReactNode | React.ReactNode[];
   delay?: number;
+  onFinish?: () => void;
+  disableBlink?: boolean;
 }
 
-const FadeInBlink: FunctionComponent<Props> = (props) => {
-  const children = !Array.isArray(props.children)
-    ? [props.children]
-    : props.children;
+const FadeInBlink: FunctionComponent<Props> = ({
+  children,
+  delay,
+  onFinish,
+  disableBlink,
+}) => {
+  const [finished, setFinished] = useState(false);
+
+  const childrenArray = !Array.isArray(children) ? [children] : children;
+
+  const getCoefficient = (index: number) => {
+    return 0.22 - index * 0.010;
+  };
+
+  useTimeout(() => {
+    onFinish?.();
+    setFinished(true);
+  }, childrenArray?.length - 1 * getCoefficient(childrenArray.length) + (delay ?? 0) + 4000);
 
   return (
     <>
-      {children.map((child, index) => {
-        const coefficient = 0.22 - index * 0.017;
+      {childrenArray.map((child, index) => {
+        const coefficient = getCoefficient(index);
         return (
           <div
             style={{
-              opacity: 0,
-              animation: `fadeInBlink 0.${randomInteger(17, 33)}s ${
-                index * coefficient + (props.delay ?? 0)
-              }s ease-out forwards`,
+              opacity: finished ? 1 : 0,
+              animation: finished
+                ? ""
+                : `${disableBlink ? "fadeIn" : "fadeInBlink"} 0.${randomInteger(
+                    17,
+                    33
+                  )}s ${index * coefficient + (delay ?? 0)}s ease-out forwards`,
             }}
           >
             {child}
             <style jsx>
               {`
+                @keyframes fadeIn {
+                  0% {
+                    opacity: 0;
+                  }
+                  100% {
+                    opacity: 1;
+                  }
+                }
                 @keyframes fadeInBlink {
                   0% {
                     opacity: 0;

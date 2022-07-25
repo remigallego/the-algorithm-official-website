@@ -22,7 +22,6 @@ function CustomApp({ Component, pageProps, router }: AppProps): JSX.Element {
     setLoading(false);
   }, LOADING_TIME);
 
-
   router.events.on("routeChangeStart", () => {
     setLoading(true);
     setTimeout(() => {
@@ -88,7 +87,7 @@ function CustomApp({ Component, pageProps, router }: AppProps): JSX.Element {
 
   return (
     <Layout>
-      <ParallaxProvider>
+      <ParallaxProvider scrollAxis="horizontal">
         <PageTransition
           timeout={TRANSITION_DELAY}
           classNames="page-transition"

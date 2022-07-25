@@ -38,7 +38,7 @@ const Layout = ({
           margin: 0;
           background-repeat: no-repeat;
           background-attachment: fixed;
-          overflow-x: hidden;
+          overflow-y: hidden;
         }
         .bold-text,
         ± .light-text,
@@ -94,9 +94,6 @@ const Layout = ({
           --small-breakpoint: 600px;
           --medium-breakpoint: 900px;
           --large-breakpoint: 1200px;
-        }
-
-        .css-selector {
         }
 
         @keyframes fadeIn {

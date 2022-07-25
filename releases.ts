@@ -19,7 +19,18 @@ const RELEASES: Release[] = [
     cover: "./images/releases/datarenaissance.jpg",
     type: ReleaseType.Album,
     date: "03/06/2022",
-    tracklist: ["Interrupt Handler"],
+    tracklist: [
+      "Segmentation Fault",
+      "Interrupt Handler",
+      "Decompilation",
+      "Readonly",
+      "Cryptographic Memory",
+      "Object Resurrection",
+      "Multithreading",
+      "Oracle Machine",
+      "Data Renaissance",
+      "Inline Assembly"
+    ],
   },
   {
     name: "Segmentation Fault",
