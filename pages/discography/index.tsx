@@ -35,9 +35,9 @@ const DiscographyPage = () => {
                 <img
                   src={release.cover}
                   className="image"
-                  onMouseOver={(e) => setCoverIsHovered(index)}
-                  onMouseOut={(e) => setCoverIsHovered(-1)}
-                  onClick={(e) => {
+                  onMouseOver={() => setCoverIsHovered(index)}
+                  onMouseOut={() => setCoverIsHovered(-1)}
+                  onClick={() => {
                     if (albumOpened === index) {
                       toggleAlbum(-1);
                     } else toggleAlbum(index);

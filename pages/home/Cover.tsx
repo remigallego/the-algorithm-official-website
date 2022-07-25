@@ -1,8 +1,5 @@
-import useMouse from "@react-hook/mouse-position";
 import Image from "next/image";
-import React, { FunctionComponent, useEffect, useRef } from "react";
-import { View } from "react-native";
-import { animated, useSpring } from "react-spring";
+import React, { FunctionComponent, useRef } from "react";
 import AnimatedMovement from "../../components/AnimatedMovement";
 import {
   LARGE_BREAKPOINT,
