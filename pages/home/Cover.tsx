@@ -44,9 +44,6 @@ const Cover: FunctionComponent<Props> = (props) => {
           >
             <Image
               src={DataRenaissanceCover}
-              onLoadingComplete={e => {
-                console.log('yo')
-              }}
               layout="fill"
               priority={true}
               style={{
