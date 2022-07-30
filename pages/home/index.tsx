@@ -1,21 +1,26 @@
 import { NextPage } from "next";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import FadeInBlink from "../../components/Animations/FadeInBlink";
 import Terminal from "../../components/Terminal";
 import useTimeout from "../../hooks/useTimeout";
 import useWindowSize from "../../hooks/useWindowSize";
+import RELEASES from "../../releases";
 import {
   HEADER_HEIGHT,
   LARGE_BREAKPOINT,
   MEDIUM_BREAKPOINT,
   SMALL_BREAKPOINT,
 } from "../../vars";
+import DiscographyTerminal from "../discography/components/DiscographyTerminal";
 import Cover from "./Cover";
 
 const IndexPage: NextPage = () => {
   const [showLogo, setShowLogo] = useState(false);
+  const [listenTerminal, toggleListenTerminal] = useState(false);
   const windowSize = useWindowSize();
   const ref = useRef(null);
+
+  useEffect(() => {}, []);
 
   useTimeout(() => {
     setShowLogo(true);
@@ -30,6 +35,9 @@ const IndexPage: NextPage = () => {
             <>
               {" "}
               <div
+                onClick={() => {
+                  toggleListenTerminal(true);
+                }}
                 style={{
                   position: "absolute",
                 }}
@@ -56,6 +64,12 @@ const IndexPage: NextPage = () => {
       </div>
 
       <Cover showLogo={showLogo} />
+      {listenTerminal && (
+        <DiscographyTerminal
+          album={RELEASES[0]}
+          handleClose={() => toggleListenTerminal(false)}
+        />
+      )}
 
       <div>
         {(windowSize.width || 0) < MEDIUM_BREAKPOINT && (

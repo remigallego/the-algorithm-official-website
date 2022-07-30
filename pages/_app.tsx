@@ -7,7 +7,6 @@ import { useState } from "react";
 import AnimatedLogo from "../components/AnimatedLogo";
 import useWindowSize from "../hooks/useWindowSize";
 import useTimeout from "../hooks/useTimeout";
-import { ParallaxProvider } from "react-scroll-parallax";
 
 const LOADING_TIME = 1300;
 
@@ -87,46 +86,44 @@ function CustomApp({ Component, pageProps, router }: AppProps): JSX.Element {
 
   return (
     <Layout>
-      <ParallaxProvider scrollAxis="horizontal">
-        <PageTransition
-          timeout={TRANSITION_DELAY}
-          classNames="page-transition"
-          loadingCallbackName={loading}
-        >
-          {loading ? (
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                height: windowSize.height,
-                width: windowSize.width,
-              }}
-            >
-              <AnimatedLogo shouldFadeAt={LOADING_TIME - 100} />
-            </div>
-          ) : (
-            <Component {...pageProps} key={router.route} />
-          )}
-        </PageTransition>
-        {renderSvgFilter()}
-        <style jsx global>{`
-          .page-transition-enter {
-            opacity: 0;
-          }
-          .page-transition-enter-active {
-            opacity: 1;
-            transition: opacity 300ms;
-          }
-          .page-transition-exit {
-            opacity: 1;
-          }
-          .page-transition-exit-active {
-            opacity: 0;
-            transition: opacity 300ms;
-          }
-        `}</style>
-      </ParallaxProvider>
+      <PageTransition
+        timeout={TRANSITION_DELAY}
+        classNames="page-transition"
+        loadingCallbackName={loading}
+      >
+        {loading ? (
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              height: windowSize.height,
+              width: windowSize.width,
+            }}
+          >
+            <AnimatedLogo shouldFadeAt={LOADING_TIME - 100} />
+          </div>
+        ) : (
+          <Component {...pageProps} key={router.route} />
+        )}
+      </PageTransition>
+      {renderSvgFilter()}
+      <style jsx global>{`
+        .page-transition-enter {
+          opacity: 0;
+        }
+        .page-transition-enter-active {
+          opacity: 1;
+          transition: opacity 300ms;
+        }
+        .page-transition-exit {
+          opacity: 1;
+        }
+        .page-transition-exit-active {
+          opacity: 0;
+          transition: opacity 300ms;
+        }
+      `}</style>
     </Layout>
   );
 }

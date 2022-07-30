@@ -41,7 +41,7 @@ const Layout = ({
           overflow-y: hidden;
         }
         .bold-text,
-        ± .light-text,
+        .light-text,
         .regular-text {
           font-size: 28px;
           font-family: "NeueMachina";
