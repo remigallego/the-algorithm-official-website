@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
 import FadeIn from "../../../components/Animations/FadeIn";
-import FadeInBlink from "../../../components/Animations/FadeInBlink";
-import { Release, ReleaseType } from "../../../releases";
+import { Release } from "../../../releases";
 
 interface Props {
   album: Release;
