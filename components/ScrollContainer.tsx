@@ -11,7 +11,7 @@ import ResizeObserver from "resize-observer-polyfill";
 
 const ScrollContainer: FunctionComponent<{
   children: any;
-  scrollInertia: any;
+  scrollIntertia: number;
 }> = ({ children, scrollIntertia }) => {
   const [{ y }, set] = useSpring(() => ({
     y: [0],

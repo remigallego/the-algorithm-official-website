@@ -1,12 +1,9 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import FadeInBlink from "../../components/Animations/FadeInBlink";
 import useWindowSize from "../../hooks/useWindowSize";
 import RELEASES, { ReleaseType } from "../../releases";
 import { HEADER_HEIGHT } from "../../vars";
 import Terminal from "../../components/Terminal";
-import { useScrollData } from "scroll-data-hook";
-import styles from "./Discography.module.css";
-import ScrollContainer from "../../components/ScrollContainer";
 
 const DiscographyPage = () => {
   const [coverIsHovered, setCoverIsHovered] = useState<number>(-1);
@@ -18,46 +15,44 @@ const DiscographyPage = () => {
     <div>
       <div className="rotate">
         <div className="container">
-          <ScrollContainer scrollInertia={222}>
-            <FadeInBlink delay={0.2} disableBlink>
-              {albums.map((release, index) => {
-                return (
-                  <div className={`album-container`}>
-                    <div className="texts-container">
-                      <p
-                        className="title"
-                        style={{
-                          transition: "color 0.2s ease-in-out",
-                          color: coverIsHovered === index ? "#11f24a" : "white",
-                        }}
-                      >
-                        {release.name}
-                      </p>
-                      <p className="year">{release.date.substring(6)}</p>
-                    </div>
-                    <div className="image-rotate">
-                      <div
-                        //src={release.cover}
-                        className="image"
-                        style={{
-                          backgroundImage: `url(${release.cover})`,
-                        }}
-                        onMouseOver={() => setCoverIsHovered(index)}
-                        onMouseOut={() => setCoverIsHovered(-1)}
-                        onClick={() => {
-                          if (albumOpened === -1) {
-                            toggleAlbum(index);
-                          } else {
-                            toggleAlbum(-1);
-                          }
-                        }}
-                      />
-                    </div>
+          <FadeInBlink delay={0.2} disableBlink>
+            {albums.map((release, index) => {
+              return (
+                <div className={`album-container`}>
+                  <div className="texts-container">
+                    <p
+                      className="title"
+                      style={{
+                        transition: "color 0.2s ease-in-out",
+                        color: coverIsHovered === index ? "#11f24a" : "white",
+                      }}
+                    >
+                      {release.name}
+                    </p>
+                    <p className="year">{release.date.substring(6)}</p>
                   </div>
-                );
-              })}
-            </FadeInBlink>
-          </ScrollContainer>
+                  <div className="image-rotate">
+                    <div
+                      //src={release.cover}
+                      className="image"
+                      style={{
+                        backgroundImage: `url(${release.cover})`,
+                      }}
+                      onMouseOver={() => setCoverIsHovered(index)}
+                      onMouseOut={() => setCoverIsHovered(-1)}
+                      onClick={() => {
+                        if (albumOpened === -1) {
+                          toggleAlbum(index);
+                        } else {
+                          toggleAlbum(-1);
+                        }
+                      }}
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </FadeInBlink>
         </div>
       </div>
       <Terminal albumId={albumOpened} handleClose={() => toggleAlbum(-1)} />

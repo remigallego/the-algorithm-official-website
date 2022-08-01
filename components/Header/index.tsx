@@ -2,7 +2,6 @@ import Image from "next/image";
 import React, { FunctionComponent } from "react";
 import useMediaQueries from "../../hooks/useMediaQueries";
 import routes from "../../routes";
-import { HEADER_HEIGHT } from "../../vars";
 import FadeInBlink from "../Animations/FadeInBlink";
 import HeaderLink from "./HeaderLink";
 
