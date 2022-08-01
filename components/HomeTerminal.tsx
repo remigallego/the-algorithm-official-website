@@ -5,7 +5,7 @@ interface Props {
   lines: string[];
 }
 
-const Terminal = (props: Props) => {
+const HomeTerminal = (props: Props) => {
   return (
     <>
       <div className="container">
@@ -32,7 +32,6 @@ const Terminal = (props: Props) => {
           border-radius: 5px;
           padding: 20px 40px;
           -webkit-filter: url(#chromaticabberration);
-
         }
         .line {
           display: block;
@@ -93,4 +92,4 @@ const Terminal = (props: Props) => {
   );
 };
 
-export default Terminal;
+export default HomeTerminal;

@@ -8,14 +8,20 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "@n8tb1t/use-scroll-position": "^2.0.3",
     "@reach/window-size": "^0.15.0",
     "@react-hook/mouse-position": "^4.1.0",
+    "@types/react-transition-group": "^4.4.5",
     "next": "latest",
     "next-page-transitions": "*",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-responsive": "^8.2.0",
+    "react-scroll-horizontal": "^1.6.6",
     "react-spring": "9.2.0-beta.0",
+    "react-transition-group": "^4.4.4",
+    "resize-observer-polyfill": "^1.5.1",
+    "scroll-data-hook": "^1.0.4",
     "usehooks-ts": "^2.5.4"
   },
   "devDependencies": {
@@ -23,6 +29,7 @@
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.1",
     "@types/react-responsive": "^8.0.2",
+    "@welldone-software/why-did-you-render": "^7.0.1",
     "typescript": "4.0"
   },
   "license": "MIT"

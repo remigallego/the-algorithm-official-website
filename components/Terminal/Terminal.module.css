@@ -1,0 +1,314 @@
+.absolute {
+  position: absolute;
+  top: 30%;
+  z-index: 1;
+  left: 50%;
+  transform: translateY(-50%);
+  transform: translateX(-50%);
+}
+
+.absolute:hover {
+}
+
+.container {
+}
+
+.my-node-enter {
+  opacity: 0;
+}
+.my-node-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+.my-node-enter-done {
+  opacity: 1;
+}
+.my-node-exit {
+  opacity: 1;
+}
+.my-node-exit-active {
+  opacity: 0;
+  transition: opacity 600ms;
+}
+.my-node-exit-done {
+  opacity: 0;
+}
+
+.terminalContainer {
+  border-radius: 6px;
+  width: 70vw;
+  overflow: hidden;
+  box-shadow: 5px 5px 0px rgba(2, 240, 125, 0);
+  animation: boxShadow 0.5s 0.6s ease-in-out forwards;
+}
+
+.terminalContainerClose {
+  animation: brightness 0.2s forwards,
+    boxShadowReverse 0.3s ease-in-out forwards;
+}
+
+@keyframes boxShadow {
+  0% {
+    box-shadow: -2px -2px 0px rgba(2, 240, 125, 0);
+  }
+  100% {
+    box-shadow: 10px 10px 0px rgba(2, 240, 125, 1);
+  }
+}
+
+@keyframes boxShadowReverse {
+  0% {
+    box-shadow: 10px 10px 0px rgba(2, 240, 125, 1);
+  }
+
+  100% {
+    box-shadow: -2px -2px 0px rgba(2, 240, 125, 0);
+  }
+}
+
+.black {
+  background-color: black;
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  height: 100vh;
+  width: 100vw;
+  animation: overlay 0.4s forwards;
+}
+
+.blackClose {
+  opacity: 0.5;
+  animation: overlayReverse 0.4s 0.2s forwards;
+}
+
+@keyframes overlay {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+@keyframes overlayReverse {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.closeButton {
+  font-size: 26px;
+  font-family: "SourceCodePro";
+  font-weight: bold;
+  transform: scaleX(1.2);
+  color: #ed0a3f;
+  transition: color 0.13s;
+  position: absolute;
+  right: 20px;
+  opacity: 0;
+  animation: fadeIn 1200ms 1200ms forwards;
+  top: 7px;
+}
+
+.closeButtonClose {
+  animation: fadeOut 20ms forwards;
+}
+
+.closeButton:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.terminalTitle {
+  font-size: 18px;
+  font-family: "SourceCodePro";
+  font-weight: bold;
+  color: white;
+}
+
+.terminalDate {
+  font-size: 18px;
+  font-weight: 400;
+  font-family: "SourceCodePro";
+  color: #11f24a;
+}
+
+.terminalFontLight {
+  font-size: 18px;
+  font-family: "SourceCodePro";
+  font-weight: lighter;
+  color: #11f24a;
+}
+
+.terminalHeader {
+  box-sizing: content-box;
+  border: 1px solid #11f24a;
+  height: 0px;
+  z-index: 2;
+  position: relative;
+  opacity: 0;
+  background: rgb(17, 242, 74);
+  background: linear-gradient(
+    180deg,
+    rgba(17, 242, 74, 1) 0%,
+    rgba(17, 242, 130, 1) 100%
+  );
+  animation: headerWidth 0.35s ease-in-out forwards,
+    0.3s 0.5s headerHeight forwards;
+  transition: filter 0.3s;
+}
+
+.terminalHeaderClose {
+  height: 40px;
+  opacity: 1;
+  width: 100%;
+
+  animation: brightness 0.2s forwards,
+    headerWidthReverse 0.25s 0.5s ease-in-out forwards,
+    0.2s 0.3s headerHeightReverse forwards;
+}
+
+@keyframes headerHeight {
+  0% {
+    height: 0px;
+  }
+  100% {
+    height: 40px;
+  }
+}
+@keyframes headerWidth {
+  0% {
+    opacity: 0;
+    width: 0px;
+  }
+
+  100% {
+    opacity: 1;
+    width: 100%;
+  }
+}
+
+@keyframes brightness {
+  0% {
+    filter: brightness(1);
+  }
+  20% {
+    filter: brightness(1.5);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+@keyframes headerWidthReverse {
+  0% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0px;
+  }
+}
+
+@keyframes headerHeightReverse {
+  0% {
+    height: 40px;
+  }
+  100% {
+    height: 0px;
+  }
+}
+
+.terminalContent {
+  opacity: 0;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  transform: translateY(-100%);
+  background-color: black;
+  padding: 20px 20px 80px;
+  animation: contentHeight 0.6s 0.35s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+
+.terminalContentClose {
+  transform: translateY(0%);
+  opacity: 1;
+  animation: fadeOut 0.37s 0.2s ease-in-out forwards,
+    contentHeightReverse 0.55s 0.2s ease-in-out forwards;
+}
+
+@keyframes contentHeight {
+  0% {
+    transform: translateY(-400%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes contentHeightReverse {
+  0% {
+    transform: translateY(0%);
+  }
+
+  100% {
+    transform: translateY(-400%);
+  }
+}
+
+@keyframes dim {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
+
+.absolute {
+  position: absolute;
+  top: 30%;
+  z-index: 1;
+  left: 50%;
+  transform: translateY(-50%);
+  transform: translateX(-50%);
+}
+
+.openingLine {
+  width: 50vw;
+  height: 20px;
+  background-color: #11f24a;
+}
+
+@keyframes overlay {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

@@ -1,83 +1,89 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import FadeInBlink from "../../components/Animations/FadeInBlink";
 import useWindowSize from "../../hooks/useWindowSize";
 import RELEASES, { ReleaseType } from "../../releases";
 import { HEADER_HEIGHT } from "../../vars";
-import DiscographyTerminal from "./components/DiscographyTerminal";
+import Terminal from "../../components/Terminal";
+import { useScrollData } from "scroll-data-hook";
+import styles from "./Discography.module.css";
+import ScrollContainer from "../../components/ScrollContainer";
 
 const DiscographyPage = () => {
   const [coverIsHovered, setCoverIsHovered] = useState<number>(-1);
   const [albumOpened, toggleAlbum] = useState<number>(-1);
   const { height, width } = useWindowSize();
-
   const albums = RELEASES.filter((r) => r.type === ReleaseType.Album);
 
   return (
     <div>
-      <div className="container">
-        <FadeInBlink delay={0.2} disableBlink>
-          {albums.map((release, index) => {
-            return (
-              <div
-                className={`album-container`}
-                style={{
-                  marginLeft: index === 0 ? 200 : 0,
-                }}
-              >
-                <div className="texts-container">
-                  <p
-                    className="title"
-                    style={{
-                      transition: "color 0.2s ease-in-out",
-                      color: coverIsHovered === index ? "#11f24a" : "white",
-                    }}
-                  >
-                    {release.name}
-                  </p>
-                  <p className="year">{release.date.substring(6)}</p>
-                </div>
-                <div
-                  //src={release.cover}
-                  className="image piece1"
-                  style={{
-                    backgroundImage: `url(${release.cover})`,
-                  }}
-                  onMouseOver={() => setCoverIsHovered(index)}
-                  onMouseOut={() => setCoverIsHovered(-1)}
-                  onClick={() => {
-                    if (albumOpened === -1) {
-                      toggleAlbum(index);
-                    } else {
-                      toggleAlbum(-1);
-                    }
-                  }}
-                />
-              </div>
-            );
-          })}
-        </FadeInBlink>
+      <div className="rotate">
+        <div className="container">
+          <ScrollContainer scrollInertia={222}>
+            <FadeInBlink delay={0.2} disableBlink>
+              {albums.map((release, index) => {
+                return (
+                  <div className={`album-container`}>
+                    <div className="texts-container">
+                      <p
+                        className="title"
+                        style={{
+                          transition: "color 0.2s ease-in-out",
+                          color: coverIsHovered === index ? "#11f24a" : "white",
+                        }}
+                      >
+                        {release.name}
+                      </p>
+                      <p className="year">{release.date.substring(6)}</p>
+                    </div>
+                    <div className="image-rotate">
+                      <div
+                        //src={release.cover}
+                        className="image"
+                        style={{
+                          backgroundImage: `url(${release.cover})`,
+                        }}
+                        onMouseOver={() => setCoverIsHovered(index)}
+                        onMouseOut={() => setCoverIsHovered(-1)}
+                        onClick={() => {
+                          if (albumOpened === -1) {
+                            toggleAlbum(index);
+                          } else {
+                            toggleAlbum(-1);
+                          }
+                        }}
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+            </FadeInBlink>
+          </ScrollContainer>
+        </div>
       </div>
-
-      {albumOpened !== -1 && (
-        <DiscographyTerminal
-          album={albums[albumOpened]}
-          handleClose={() => toggleAlbum(-1)}
-        />
-      )}
-
+      <Terminal albumId={albumOpened} handleClose={() => toggleAlbum(-1)} />
       <style jsx>{`
         .container {
           -ms-overflow-style: none; /* Internet Explorer 10+ */
           scrollbar-width: none; /* Firefox */
           display: flex;
-          width: ${width || 0}px;
+          height: ${width || 0}px;
           overflow: scroll;
           padding: 0px 48px 48px;
           box-sizing: border-box;
           padding-top: 80px;
-          height: ${(height ?? 0) - HEADER_HEIGHT}px;
+          width: ${(height ?? 0) - HEADER_HEIGHT}px;
+          flex-direction: column;
+          align-items: center;
         }
-        .container::-webkit-scrollbar {
+        .rotate {
+          margin-top: ${(height ?? 0) - HEADER_HEIGHT}px;
+          transform-origin: top left;
+          transform: rotate(-90deg);
+          width: ${(height ?? 0) - HEADER_HEIGHT}px;
+          overflow: hidden;
+        }
+        .container::-webkit-scrollbar,
+        .rotate::-webkit-scrollbar {
           display: none; /* Safari and Chrome */
         }
 
@@ -88,6 +94,11 @@ const DiscographyPage = () => {
           to {
             opacity: 0.5;
           }
+        }
+
+        .fake-scroller {
+          -ms-overflow-style: none; /* Internet Explorer 10+ */
+          scrollbar-width: none; /* Firefox */
         }
         .logo {
           background-image: url("./images/logowhite.png");
@@ -106,10 +117,12 @@ const DiscographyPage = () => {
           width: 40vw;
           max-width: 500px;
           justify-content: center;
-          margin-right: 58px;
+          margin-bottom: 48px;
           align-items: flex-end;
           flex-direction: column;
+          transform: rotate(90deg);
         }
+
         .texts-container {
           display: flex;
           flex-direction: column;
@@ -120,16 +133,32 @@ const DiscographyPage = () => {
 
         .image {
           background-size: cover;
-          width: 40vw;
-          height: 40vw;
+          width: 70vw;
+          height: 70vw;
           max-width: 500px;
           max-height: 500px;
-          transition: transform 0.2s;
           border-radius: 5px;
+          transform: scale(1);
+          transition: transform 0.15s ease-in-out;
         }
+
         .image:hover {
           cursor: pointer;
           transform: scale(1.03);
+          animation: imageHover 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+            forwards;
+        }
+
+        @keyframes imageHover {
+          0% {
+            filter: brightness(1);
+          }
+          24% {
+            filter: brightness(1.47);
+          }
+          100% {
+            filter: brightness(1);
+          }
         }
         .title {
           font-family: "NeueMachina";
@@ -182,6 +211,20 @@ const DiscographyPage = () => {
           }
           100% {
             opacity: 1;
+          }
+        }
+
+        @media (min-width: 768px) {
+          .image {
+            width: 40vw;
+            height: 40vw;
+          }
+          .album-container {
+            transform: rotate(0deg);
+          }
+
+          .image-rotate {
+            transform: rotateZ(90deg);
           }
         }
       `}</style>

@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import React, { useEffect, useRef, useState } from "react";
 import FadeInBlink from "../../components/Animations/FadeInBlink";
-import Terminal from "../../components/Terminal";
+import HomeTerminal from "../../components/HomeTerminal";
 import useTimeout from "../../hooks/useTimeout";
 import useWindowSize from "../../hooks/useWindowSize";
 import RELEASES from "../../releases";
@@ -11,7 +11,7 @@ import {
   MEDIUM_BREAKPOINT,
   SMALL_BREAKPOINT,
 } from "../../vars";
-import DiscographyTerminal from "../discography/components/DiscographyTerminal";
+import DiscographyTerminal from "../../components/Terminal";
 import Cover from "./Cover";
 
 const IndexPage: NextPage = () => {
@@ -30,7 +30,7 @@ const IndexPage: NextPage = () => {
     <div ref={ref} className="container" onMouseMove={() => {}}>
       <div className="terminal-container">
         <FadeInBlink delay={0.2}>
-          <Terminal lines={["NEW ALBUM OUT NOW", "DATA RENAISSANCE"]} />
+          <HomeTerminal lines={["NEW ALBUM OUT NOW", "DATA RENAISSANCE"]} />
           {(windowSize.width || 0) >= MEDIUM_BREAKPOINT && (
             <>
               {" "}

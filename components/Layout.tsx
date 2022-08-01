@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 import Head from "next/head";
 import Header from "./Header";
 import Socials from "./Socials";
+import { HEADER_HEIGHT } from "../vars";
 
 type Props = {
   children?: ReactNode;
@@ -21,8 +22,21 @@ const Layout = ({
         <link rel="stylesheet" href="/fonts/fonts.css" />
         <script src="https://unpkg.com/zdog@1/dist/zdog.dist.min.js"></script>
       </Head>
-      <Header />
-      {children}
+      <div
+        style={{
+          position: "fixed",
+          width: "100%",
+        }}
+      >
+        <Header />
+      </div>
+      <div
+        style={{
+          paddingTop: HEADER_HEIGHT,
+        }}
+      >
+        {children}
+      </div>
       <Socials />
       <style global jsx>{`
         .social {
@@ -38,6 +52,7 @@ const Layout = ({
           margin: 0;
           background-repeat: no-repeat;
           background-attachment: fixed;
+          overflow-x: hidden;
           overflow-y: hidden;
         }
         .bold-text,
