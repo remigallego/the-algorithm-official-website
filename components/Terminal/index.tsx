@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 import FadeIn from "../Animations/FadeIn";
 import RELEASES, { ReleaseType } from "../../releases";
 import styles from "./Terminal.module.css";
