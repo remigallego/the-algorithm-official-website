@@ -23,6 +23,16 @@ const IndexPage: NextPage = () => {
     setShowLogo(true);
   }, 800);
 
+  const onClickListen = () => {
+    window.open("http://found.ee/dataren", "_blank");
+  };
+  const onClickBuy = () => {
+    window.open(
+      "https://thealgorithm.bandcamp.com/album/data-renaissance",
+      "_blank"
+    );
+  };
+
   return (
     <div ref={ref} className="container" onMouseMove={() => {}}>
       <div className="terminal-container">
@@ -32,6 +42,7 @@ const IndexPage: NextPage = () => {
             <>
               {" "}
               <div
+                onClick={onClickListen}
                 style={{
                   position: "absolute",
                 }}
@@ -41,6 +52,7 @@ const IndexPage: NextPage = () => {
                 </div>
               </div>
               <div
+                onClick={onClickBuy}
                 style={{
                   position: "absolute",
                   marginTop: 48,
@@ -72,6 +84,7 @@ const IndexPage: NextPage = () => {
           >
             <FadeInBlink delay={0.4}>
               <div
+                onClick={onClickListen}
                 className={"listen-container slide-and-fade-animation"}
                 style={{
                   width: "60%",
@@ -82,6 +95,7 @@ const IndexPage: NextPage = () => {
                 <p className={"bold-text"}>listen</p>
               </div>
               <div
+                onClick={onClickBuy}
                 className={"listen-container blue slide-and-fade-animation"}
                 style={{
                   width: "60%",
