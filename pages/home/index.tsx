@@ -11,6 +11,7 @@ import {
   SMALL_BREAKPOINT,
 } from "../../vars";
 import Cover from "./Cover";
+import styles from "./Home.module.css";
 
 const IndexPage: NextPage = () => {
   const [showLogo, setShowLogo] = useState(false);
@@ -33,9 +34,9 @@ const IndexPage: NextPage = () => {
     );
   };
 
-  return (
-    <div ref={ref} className="container" onMouseMove={() => {}}>
-      <div className="terminal-container">
+  const renderTerminal = () => {
+    return (
+      <div className={styles.terminalContainer}>
         <FadeInBlink delay={0.2}>
           <HomeTerminal lines={["NEW ALBUM OUT NOW", "DATA RENAISSANCE"]} />
           {(windowSize.width || 0) >= MEDIUM_BREAKPOINT && (
@@ -47,7 +48,7 @@ const IndexPage: NextPage = () => {
                   position: "absolute",
                 }}
               >
-                <div className={"listen-container slide-and-fade-animation"}>
+                <div className={styles.listenContainer}>
                   <p className={"bold-text"}>listen</p>
                 </div>
               </div>
@@ -58,9 +59,7 @@ const IndexPage: NextPage = () => {
                   marginTop: 48,
                 }}
               >
-                <div
-                  className={"listen-container blue slide-and-fade-animation"}
-                >
+                <div className={[styles.listenContainer, styles.blue].join(" ")}>
                   <p className={"bold-text"}>buy</p>
                 </div>
               </div>
@@ -68,9 +67,13 @@ const IndexPage: NextPage = () => {
           )}
         </FadeInBlink>
       </div>
+    );
+  };
 
+  return (
+    <div ref={ref} className="container" onMouseMove={() => {}}>
+      {renderTerminal()}
       <Cover showLogo={showLogo} />
-
       <div>
         {(windowSize.width || 0) < MEDIUM_BREAKPOINT && (
           <div
