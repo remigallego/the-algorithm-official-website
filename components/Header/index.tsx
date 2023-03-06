@@ -1,14 +1,11 @@
 import Image from "next/image";
 import React, { FunctionComponent } from "react";
-import useMediaQueries from "../../hooks/useMediaQueries";
-import FadeInBlink from "../Animations/FadeInBlink";
 
 interface Props {
   children?: React.ReactNode;
 }
 
 const Header: FunctionComponent<Props> = () => {
-  const { smallScreen } = useMediaQueries();
 
   const renderMenu = () => {
     return (

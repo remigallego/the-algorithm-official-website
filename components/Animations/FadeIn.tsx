@@ -1,10 +1,11 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 import useTimeout from "../../hooks/useTimeout";
 import randomInteger from "../../utils/math";
+import { Line } from "../Terminal";
 
 interface Props {
   delay: number;
-  lines: string[];
+  lines: Line[];
   onFinish?: () => void;
   disableBlink?: boolean;
 }
@@ -28,16 +29,29 @@ const randomCharacterOrSymbol = (): string => {
   return String.fromCharCode(randomInteger(33, 47));
 };
 
+
 const Char: FunctionComponent<{
   children: string;
   offset: number;
   bold: boolean;
   mouseOver: boolean;
-}> = ({ children, offset, bold, mouseOver }) => {
+}> = ({ children: character, offset, bold, mouseOver }) => {
   const [content, setContent] = useState(randomCharacterOrSymbol());
+
   useTimeout(() => {
-    setContent(children);
+    setContent(character);
   }, offset * 1000);
+
+  useEffect(() => {
+    setContent(randomCharacterOrSymbol());
+
+    setTimeout(() => {
+      setContent(character);
+    }, offset * 1000);
+  }, [character]);
+
+  useEffect(() => {});
+
   return (
     <div
       className="char"
@@ -45,8 +59,10 @@ const Char: FunctionComponent<{
         opacity: 0,
         animation: `fadeIn 0s ${offset * 0.85}s ease-out forwards, ${
           bold ? "blink" : ""
-        } ${mouseOver ? '0.1s' : '0.4s'} ${offset * 0.85}s ease-out forwards infinite`,
-        color: content === children ? "#11f24a" : "#91ffad",
+        } ${mouseOver ? "0.1s" : "0.4s"} ${
+          offset * 0.85
+        }s ease-out forwards infinite`,
+        color: content === character ? "#11f24a" : "#91ffad",
         fontWeight: bold ? "bold" : "normal",
       }}
     >
@@ -58,13 +74,12 @@ const Char: FunctionComponent<{
             all: unset;
             margin: 0;
             padding: 0;
-            font-size: 18px;
+            font-size: 20px;
             font-family: "SourceCodePro";
             font-weight: normal;
             color: #11f24a;
           }
 
-      
           @keyframes fadeIn {
             0% {
               opacity: 0;
@@ -92,29 +107,40 @@ const Char: FunctionComponent<{
 
 const FadeIn: FunctionComponent<Props> = ({ lines, delay }) => {
   const [mouseOver, setMouseOver] = useState<string | null>(null);
+
   return (
     <>
-      {lines.map((child, index) => {
+      {lines.map((line, index) => {
         const time = index * 0.1;
-        const isBold = child === "LISTEN" || child === "BUY";
+        const isBold = line.action ? true : false;
         return (
-          <div>
+          <div onClick={() => line.action?.()}>
             <p
               onMouseOver={() => {
-                setMouseOver(child);
+                if (isBold) {
+                  setMouseOver(line.text);
+                }
               }}
               onMouseOut={() => {
-                setMouseOver(null);
+                if (isBold) {
+                  setMouseOver(null);
+                }
               }}
               className="terminal-title"
               style={{
-                cursor: isBold ? "pointer" : "",
+                cursor: line.action ? "pointer" : "",
+                transition: "all 0.2s ease-in-out",
               }}
             >
-              {child.split("").map((char, idx) => {
+              {line.text.split("").map((char, idx) => {
                 const offset = time + delay + idx * 0.011;
                 return (
-                  <Char offset={offset} bold={isBold} mouseOver={mouseOver === child}>
+                  <Char
+                    key={line + index.toString() + idx.toString() + randomCharacterOrSymbol()}
+                    offset={offset}
+                    bold={isBold}
+                    mouseOver={mouseOver === line.text}
+                  >
                     {char}
                   </Char>
                 );
@@ -123,14 +149,6 @@ const FadeIn: FunctionComponent<Props> = ({ lines, delay }) => {
           </div>
         );
       })}
-      <style jsx>
-        {`
-          .terminal-title {
-          }
-          .terminal-title:hover {
-          }
-        `}
-      </style>
     </>
   );
 };
