@@ -65,12 +65,10 @@ const LinksPage = () => {
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
-              if (isOpen === null) {
-                executeScroll(theLastSpellRef);
-                setIsOpen("THE LAST SPELL");
-              } else {
-                setIsOpen(null);
-              }
+              window.open(
+                "https://fixtstore.com/collections/the-algorithm",
+                "_blank"
+              );
             }}
           />
         </div>
