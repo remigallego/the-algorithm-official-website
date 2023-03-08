@@ -42,6 +42,7 @@ const Layout = ({
         </div>
       )}
       <div
+        className="wrapper"
         style={{
           paddingTop: HEADER_HEIGHT,
         }}
@@ -66,6 +67,10 @@ const Layout = ({
           overflow-x: hidden;
           overflow-y: ${getPagePath() === "/links" ? "scroll" : "hidden"};
           animation: wheelHueColor 16s infinite linear;
+        }
+
+        .wrapper {
+          overflow-x: hidden;
         }
         .bold-text,
         .light-text,

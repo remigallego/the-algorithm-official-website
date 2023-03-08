@@ -214,7 +214,7 @@ const LinksPage = () => {
               borderRadius: 20,
               cursor: "pointer",
             }}
-            height={600}
+            height={200}
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
