@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
+import useInterval from "../../hooks/useInterval";
 import useTimeout from "../../hooks/useTimeout";
 import randomInteger from "../../utils/math";
 import { Line } from "../Terminal";
@@ -29,7 +30,6 @@ const randomCharacterOrSymbol = (): string => {
   return String.fromCharCode(randomInteger(33, 47));
 };
 
-
 const Char: FunctionComponent<{
   children: string;
   offset: number;
@@ -40,29 +40,26 @@ const Char: FunctionComponent<{
 
   useTimeout(() => {
     setContent(character);
-  }, offset * 1000);
+  }, randomInteger(0, 800));
 
   useEffect(() => {
     setContent(randomCharacterOrSymbol());
 
-    setTimeout(() => {
+    /*    setTimeout(() => {
       setContent(character);
-    }, offset * 1000);
+    }, offset * 1000); */
   }, [character]);
-
-  useEffect(() => {});
 
   return (
     <div
       className="char"
       style={{
-        opacity: 0,
-        animation: `fadeIn 0s ${offset * 0.85}s ease-out forwards, ${
+        /*   animation: `fadeIn 0s ${offset * 0.85}s ease-out forwards, ${
           bold ? "blink" : ""
         } ${mouseOver ? "0.1s" : "0.4s"} ${
           offset * 0.85
-        }s ease-out forwards infinite`,
-        color: content === character ? "#11f24a" : "#91ffad",
+        }s ease-out forwards infinite`, */
+        // color: content === character ? "#11f24a" : "#91ffad",
         fontWeight: bold ? "bold" : "normal",
       }}
     >
@@ -74,26 +71,14 @@ const Char: FunctionComponent<{
             all: unset;
             margin: 0;
             padding: 0;
-            font-size: 20px;
+            font-size: 16px;
             font-family: "SourceCodePro";
-            font-weight: normal;
-            color: #11f24a;
+            color: black;
           }
 
           @keyframes fadeIn {
             0% {
               opacity: 0;
-            }
-            100% {
-              opacity: 1;
-            }
-          }
-          @keyframes blink {
-            0% {
-              opacity: 1;
-            }
-            50% {
-              opacity: 0.6;
             }
             100% {
               opacity: 1;
@@ -108,6 +93,14 @@ const Char: FunctionComponent<{
 const FadeIn: FunctionComponent<Props> = ({ lines, delay }) => {
   const [mouseOver, setMouseOver] = useState<string | null>(null);
 
+  const [randomNumber, setRandomNumber] = useState(0);
+
+  useEffect(() => {
+    if (mouseOver) {
+      setRandomNumber(randomInteger(0, 1020));
+    }
+  }, [mouseOver]);
+
   return (
     <>
       {lines.map((line, index) => {
@@ -117,14 +110,10 @@ const FadeIn: FunctionComponent<Props> = ({ lines, delay }) => {
           <div onClick={() => line.action?.()}>
             <p
               onMouseOver={() => {
-                if (isBold) {
-                  setMouseOver(line.text);
-                }
+                setMouseOver(line.text);
               }}
               onMouseOut={() => {
-                if (isBold) {
-                  setMouseOver(null);
-                }
+                setMouseOver(null);
               }}
               className="terminal-title"
               style={{
@@ -136,7 +125,12 @@ const FadeIn: FunctionComponent<Props> = ({ lines, delay }) => {
                 const offset = time + delay + idx * 0.011;
                 return (
                   <Char
-                    key={line + index.toString() + idx.toString() + randomCharacterOrSymbol()}
+                    key={
+                      line +
+                      index.toString() +
+                      idx.toString() +
+                      randomCharacterOrSymbol()
+                    }
                     offset={offset}
                     bold={isBold}
                     mouseOver={mouseOver === line.text}

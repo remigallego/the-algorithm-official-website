@@ -2,7 +2,8 @@ import React, { FunctionComponent, useState } from "react";
 import LogoSvg from "./LogoSvg";
 
 interface Props {
-  shouldFadeAt: number;
+  shouldFadeAt?: number;
+  enableTransform?: boolean;
 }
 
 const AnimatedLogo: FunctionComponent<Props> = (props) => {
@@ -84,7 +85,9 @@ const AnimatedLogo: FunctionComponent<Props> = (props) => {
           width: `${"50%"}`,
           height: "22%",
           boxSizing: "border-box",
-          transform: "translateY(-10vw)",
+          ...(props.enableTransform && {
+            transform: "translateY(-10vw)",
+          }),
           alignItems: "center",
           justifyContent: "center",
           display: "flex",

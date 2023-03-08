@@ -21,12 +21,10 @@ const Terminal: FunctionComponent<Props> = ({ handleClose, albumId }) => {
   const albums = RELEASES.filter((r) => r.type === ReleaseType.Album);
   const album = albums[albumId];
 
-  console.log({ lines });
-
   const overrideWithNewLines = (newLines: Line[]) => {
     const newLinesLength = newLines.length;
     setDelay(0.1);
-    return setLines(oldLines => [
+    return setLines((oldLines) => [
       ...newLines,
       ...oldLines.slice(newLinesLength, oldLines.length).map(() => ({
         text: "⠀",
