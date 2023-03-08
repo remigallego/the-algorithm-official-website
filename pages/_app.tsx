@@ -97,7 +97,7 @@ function CustomApp({ Component, pageProps, router }: AppProps): JSX.Element {
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
-              height: windowSize.height - 200,
+              height: windowSize.height ?? 200 - 200,
               width: windowSize.width,
             }}
           >

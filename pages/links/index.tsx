@@ -345,7 +345,7 @@ const LinksPage = () => {
         onClick={() => window.open(getUrl(), "_blank")}
       >
         {getRightSideImage()}
-        <FadeIn lines={[{ text: text }]} />
+        <FadeIn lines={[{ text: text }]} delay={0} />
       </div>
     );
   };

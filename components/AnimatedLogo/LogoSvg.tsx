@@ -14,7 +14,7 @@ interface Props {
   children?: React.ReactNode;
   style: React.CSSProperties;
   pressed: boolean;
-  shouldFadeAt: number;
+  shouldFadeAt?: number;
 }
 
 const LogoSvg: FunctionComponent<Props> = (props) => {
@@ -33,8 +33,8 @@ const LogoSvg: FunctionComponent<Props> = (props) => {
   }, 0);
 
   useTimeout(() => {
-    setShouldFade(true);
-  }, props.shouldFadeAt);
+    if (props.shouldFadeAt) setShouldFade(true);
+  }, props.shouldFadeAt ?? 0);
 
   const animatedStroke = useSpring({
     strokeDasharray: randomInteger(650, 900),
@@ -200,7 +200,6 @@ const LogoSvg: FunctionComponent<Props> = (props) => {
             transform: scale(1);
           }
         }
-     
       `}</style>
     </div>
   );

@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
-import useInterval from "../../hooks/useInterval";
 import useTimeout from "../../hooks/useTimeout";
 import randomInteger from "../../utils/math";
 import { Line } from "../Terminal";
@@ -35,7 +34,7 @@ const Char: FunctionComponent<{
   offset: number;
   bold: boolean;
   mouseOver: boolean;
-}> = ({ children: character, offset, bold, mouseOver }) => {
+}> = ({ children: character, bold }) => {
   const [content, setContent] = useState(randomCharacterOrSymbol());
 
   useTimeout(() => {
@@ -98,6 +97,7 @@ const FadeIn: FunctionComponent<Props> = ({ lines, delay }) => {
   useEffect(() => {
     if (mouseOver) {
       setRandomNumber(randomInteger(0, 1020));
+      randomNumber;
     }
   }, [mouseOver]);
 
