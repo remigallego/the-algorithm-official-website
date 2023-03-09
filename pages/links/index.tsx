@@ -75,10 +75,7 @@ const LinksPage = () => {
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
-              window.open(
-                "https://discord.gg/92WtQD3EDc",
-                "_blank"
-              );
+              window.open("https://discord.gg/92WtQD3EDc", "_blank");
             }}
           />
         </div>
@@ -133,14 +130,15 @@ const LinksPage = () => {
               cursor: "pointer",
             }}
             onClick={(e) => {
-              e.preventDefault();
+              window.open("https://idol-io.link/TheLastSpell", "_blank");
+              /*    e.preventDefault();
               e.stopPropagation();
               if (isOpen === null) {
                 executeScroll(theLastSpellRef);
                 setIsOpen("THE LAST SPELL");
               } else {
                 setIsOpen(null);
-              }
+              } */
             }}
           />
           {isOpen === "THE LAST SPELL" && (
