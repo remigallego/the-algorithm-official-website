@@ -242,15 +242,15 @@
   margin-top: -220px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 550px) {
   .logoContainer {
     width: 190%;
     margin-top: -170px;
-    margin-bottom: 130px;
+    margin-bottom: 90px;
   }
 }
 
-@media (min-width: 601px) {
+@media (min-width: 551px) {
   .logoContainer {
     margin-top: -170px;
     margin-bottom: 150px;

@@ -86,7 +86,7 @@ const AnimatedLogo: FunctionComponent<Props> = (props) => {
           height: "22%",
           boxSizing: "border-box",
           ...(props.enableTransform && {
-            transform: "translateY(-10vw)",
+            transform: "translateY(-15vw)",
           }),
           alignItems: "center",
           justifyContent: "center",
