@@ -16,6 +16,7 @@ import InstagramLogo from "./assets/instagram.png";
 import FacebookLogo from "./assets/facebook.png";
 import YoutubeLogoColor from "./assets/youtube.png";
 import SteamLogo from "./assets/steam.png";
+import Discord from "./assets/discord.png";
 import FadeIn from "../../components/Animations/FadeIn";
 
 const TheLastSpellLinks = {
@@ -54,10 +55,38 @@ const LinksPage = () => {
   };
 
   const renderImageBackgroundPill = (text: string) => {
+    if (text === "DISCORD") {
+      return (
+        <div
+          className={cx(styles.pillDimensions, {
+            [styles.hoverable]: !isOpen,
+          })}
+          style={{ margin: "0px 0px -4px" }}
+        >
+          <Image
+            alt={""}
+            src={Discord}
+            objectFit={"cover"}
+            height={180}
+            style={{
+              borderRadius: 20,
+              cursor: "pointer",
+            }}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              window.open(
+                "https://discord.gg/92WtQD3EDc",
+                "_blank"
+              );
+            }}
+          />
+        </div>
+      );
+    }
     if (text === "MERCH") {
       return (
         <div
-          ref={theLastSpellRef}
           className={cx(styles.pillDimensions, {
             [styles.hoverable]: !isOpen,
           })}
@@ -360,6 +389,7 @@ const LinksPage = () => {
         {renderImageBackgroundPill("MERCH")}
         {renderTerminalPill()}
         <h1>̵s̷o̴cia̵l̶s</h1>
+        {renderImageBackgroundPill("DISCORD")}
         {renderDefaultPill("░░░ Curated Spotify Playlists ░░░")}
         {renderDefaultPill("follow ./twitter")}
         {renderDefaultPill("like ./facebook")}
