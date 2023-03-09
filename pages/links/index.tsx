@@ -121,8 +121,8 @@ const LinksPage = () => {
                   borderRadius: 12,
                   marginBottom: 10,
                 }}
-                src="https://open.spotify.com/embed/album/1jdwztMpVwxLMf3C9IkrmY?utm_source=generator"
-                width="90%"
+                src="https://open.spotify.com/embed/album/4NHQJlyteZwShk67OEe71W?utm_source=generator"
+                width="100%"
                 height="352"
                 frameBorder="0"
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
