@@ -129,7 +129,7 @@ const LinksPage = () => {
               borderRadius: 20,
               cursor: "pointer",
             }}
-            onClick={(e) => {
+            onClick={() => {
               window.open("https://idol-io.link/TheLastSpell", "_blank");
               /*    e.preventDefault();
               e.stopPropagation();
