@@ -18,6 +18,16 @@ import YoutubeLogoColor from "./assets/youtube.png";
 import SteamLogo from "./assets/steam.png";
 import FadeIn from "../../components/Animations/FadeIn";
 
+const TheLastSpellLinks = {
+  Spotify:
+    "https://open.spotify.com/album/4NHQJlyteZwShk67OEe71W?si=pr-6oupgSDSkQH3Q8RAAfg",
+  Apple:
+    "https://music.apple.com/us/album/the-last-spell-original-game-soundtrack/1675871681",
+  Bandcamp: "https://kidkatanarecords.bandcamp.com/",
+  Youtube: "https://www.youtube.com/channel/UCo5yyv5VD-jgizR97b695zA",
+  Steam: "https://store.steampowered.com/bundle/21005/Headbanger_Pack/",
+};
+
 const LinksPage = () => {
   const [isOpen, setIsOpen] = useState<string | null>(null);
 
@@ -122,9 +132,7 @@ const LinksPage = () => {
               <div
                 className={styles.secondLevelPill}
                 onClick={() => {
-                  window.open(
-                    "https://open.spotify.com/album/1jdwztMpVwxLMf3C9IkrmY?si=OQkiZ4pMQE2Qy1oxtZEzmA"
-                  );
+                  window.open(TheLastSpellLinks.Spotify);
                 }}
               >
                 <Image src={SpotifyLogo} width={24} height={24} />
@@ -133,9 +141,7 @@ const LinksPage = () => {
               <div
                 className={styles.secondLevelPill}
                 onClick={() => {
-                  window.open(
-                    "https://store.steampowered.com/bundle/21005/Headbanger_Pack/"
-                  );
+                  window.open(TheLastSpellLinks.Steam);
                 }}
               >
                 <Image src={SteamLogo} width={24} height={24} />
@@ -152,9 +158,7 @@ const LinksPage = () => {
               <div
                 className={styles.secondLevelPill}
                 onClick={() => {
-                  window.open(
-                    "https://store.steampowered.com/bundle/21005/Headbanger_Pack/" // TODO: Replace with Kid Katana Bandcamp
-                  );
+                  window.open(TheLastSpellLinks.Bandcamp);
                 }}
               >
                 <Image src={BandcampLogo} width={24} height={24} />
@@ -171,9 +175,7 @@ const LinksPage = () => {
               <div
                 className={styles.secondLevelPill}
                 onClick={() => {
-                  window.open(
-                    "https://music.apple.com/us/album/the-last-spell-original-game-soundtrack/1569019810"
-                  );
+                  window.open(TheLastSpellLinks.Apple);
                 }}
               >
                 <Image src={AppleLogo} width={24} height={24} />
@@ -182,9 +184,7 @@ const LinksPage = () => {
               <div
                 className={styles.secondLevelPill}
                 onClick={() => {
-                  window.open(
-                    "https://store.steampowered.com/bundle/21005/Headbanger_Pack/" // TODO: Replace with Kid Katana Youtube
-                  );
+                  window.open(TheLastSpellLinks.Youtube);
                 }}
               >
                 <Image src={YoutubeLogo} width={24} height={24} />
