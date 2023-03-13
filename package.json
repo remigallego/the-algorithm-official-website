@@ -12,7 +12,6 @@
     "@reach/window-size": "^0.15.0",
     "@react-hook/mouse-position": "^4.1.0",
     "@types/react-transition-group": "^4.4.5",
-    "@vercel/analytics": "^0.1.11",
     "classnames": "^2.3.2",
     "next": "latest",
     "next-page-transitions": "*",
