@@ -18,8 +18,9 @@ import YoutubeLogoColor from "./assets/youtube.png";
 import SteamLogo from "./assets/steam.png";
 import Discord from "./assets/discord.png";
 import FadeIn from "../../components/Animations/FadeIn";
+import { event } from "nextjs-google-analytics";
 
-export const event = ({
+export const trackEvent = ({
   action,
   params,
 }: {
@@ -28,8 +29,8 @@ export const event = ({
     [key: string]: string | number | boolean | undefined | null;
   };
 }) => {
-  // @ts-ignore
-  window.gtag("event", action, params);
+  // window.gtag("event", action, params);
+  event(action, params);
 };
 
 const TheLastSpellLinks = {
@@ -56,7 +57,7 @@ const LinksPage = () => {
       <div
         className={`${styles.pillContainer} ${styles.blackPill}`}
         onClick={() => {
-          event({
+          trackEvent({
             action: "click",
             params: {
               event_label: "data_renaissance_vinyl",
@@ -94,7 +95,7 @@ const LinksPage = () => {
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
-              event({
+              trackEvent({
                 action: "click",
                 params: {
                   event_label: "discord",
@@ -127,7 +128,7 @@ const LinksPage = () => {
               e.preventDefault();
               e.stopPropagation();
 
-              event({
+              trackEvent({
                 action: "click",
                 params: {
                   event_label: "merch_store",
@@ -162,7 +163,7 @@ const LinksPage = () => {
               cursor: "pointer",
             }}
             onClick={() => {
-              event({
+              trackEvent({
                 action: "click",
                 params: {
                   event_label: "the_last_spell",
@@ -281,7 +282,7 @@ const LinksPage = () => {
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
-              event({
+              trackEvent({
                 action: "click",
                 params: {
                   event_label: "toggle_data_renaissance",
@@ -314,7 +315,7 @@ const LinksPage = () => {
               <div
                 className={styles.secondLevelPill}
                 onClick={() => {
-                  event({
+                  trackEvent({
                     action: "click",
                     params: {
                       event_label: "data_renaissance_spotify",
@@ -331,7 +332,7 @@ const LinksPage = () => {
               <div
                 className={styles.secondLevelPill}
                 onClick={() => {
-                  event({
+                  trackEvent({
                     action: "click",
                     params: {
                       event_label: "data_renaissance_bandcamp",
@@ -356,7 +357,7 @@ const LinksPage = () => {
               <div
                 className={styles.secondLevelPill}
                 onClick={() => {
-                  event({
+                  trackEvent({
                     action: "click",
                     params: {
                       event_label: "data_renaissance_apple",
@@ -373,7 +374,7 @@ const LinksPage = () => {
               <div
                 className={styles.secondLevelPill}
                 onClick={() => {
-                  event({
+                  trackEvent({
                     action: "click",
                     params: {
                       event_label: "data_renaissance_youtube",
@@ -436,7 +437,7 @@ const LinksPage = () => {
               : "flex-start",
         }}
         onClick={() => {
-          event({
+          trackEvent({
             action: "click",
             params: {
               event_label: `socials:${getUrl()}`,
