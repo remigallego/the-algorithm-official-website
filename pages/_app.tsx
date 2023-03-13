@@ -125,6 +125,10 @@ function CustomApp({ Component, pageProps, router }: AppProps): JSX.Element {
           transition: opacity 300ms;
         }
       `}</style>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-LG38264ZVP"
+        strategy="afterInteractive"
+      />
       <Script id="google-analytics" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
