@@ -131,7 +131,7 @@ function CustomApp({ Component, pageProps, router }: AppProps): JSX.Element {
           function gtag(){window.dataLayer.push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', 'G-BXL1407J5G');
+          gtag('config', 'G-LG38264ZVP');
         `}
       </Script>
     </Layout>
