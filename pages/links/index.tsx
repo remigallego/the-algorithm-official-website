@@ -19,6 +19,19 @@ import SteamLogo from "./assets/steam.png";
 import Discord from "./assets/discord.png";
 import FadeIn from "../../components/Animations/FadeIn";
 
+export const event = ({
+  action,
+  params,
+}: {
+  action: string;
+  params: {
+    [key: string]: string | number | boolean | undefined | null;
+  };
+}) => {
+  // @ts-ignore
+  window.gtag("event", action, params);
+};
+
 const TheLastSpellLinks = {
   Spotify:
     "https://open.spotify.com/album/4NHQJlyteZwShk67OEe71W?si=pr-6oupgSDSkQH3Q8RAAfg",
@@ -43,6 +56,12 @@ const LinksPage = () => {
       <div
         className={`${styles.pillContainer} ${styles.blackPill}`}
         onClick={() => {
+          event({
+            action: "click",
+            params: {
+              event_label: "data_renaissance_vinyl",
+            },
+          });
           window.open(
             "https://fixtstore.com/products/the-algorithm-data-renaissance-vinyl"
           );
@@ -75,6 +94,12 @@ const LinksPage = () => {
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
+              event({
+                action: "click",
+                params: {
+                  event_label: "discord",
+                },
+              });
               window.open("https://discord.gg/92WtQD3EDc", "_blank");
             }}
           />
@@ -101,6 +126,13 @@ const LinksPage = () => {
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
+
+              event({
+                action: "click",
+                params: {
+                  event_label: "merch_store",
+                },
+              });
               window.open(
                 "https://fixtstore.com/collections/the-algorithm",
                 "_blank"
@@ -130,6 +162,12 @@ const LinksPage = () => {
               cursor: "pointer",
             }}
             onClick={() => {
+              event({
+                action: "click",
+                params: {
+                  event_label: "the_last_spell",
+                },
+              });
               window.open("https://idol-io.link/TheLastSpell", "_blank");
               /*    e.preventDefault();
               e.stopPropagation();
@@ -243,6 +281,12 @@ const LinksPage = () => {
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
+              event({
+                action: "click",
+                params: {
+                  event_label: "toggle_data_renaissance",
+                },
+              });
               if (!isOpen) {
                 executeScroll(dataRenRef);
                 setIsOpen("DATA RENAISSANCE");
@@ -270,6 +314,12 @@ const LinksPage = () => {
               <div
                 className={styles.secondLevelPill}
                 onClick={() => {
+                  event({
+                    action: "click",
+                    params: {
+                      event_label: "data_renaissance_spotify",
+                    },
+                  });
                   window.open(
                     "https://open.spotify.com/album/1LHSxBpDSoNUrOezwOcLKU?si=rvNjJAWPSZKrrBlMSidjAQ"
                   );
@@ -281,6 +331,12 @@ const LinksPage = () => {
               <div
                 className={styles.secondLevelPill}
                 onClick={() => {
+                  event({
+                    action: "click",
+                    params: {
+                      event_label: "data_renaissance_bandcamp",
+                    },
+                  });
                   window.open(
                     "https://thealgorithm.bandcamp.com/album/data-renaissance"
                   );
@@ -300,6 +356,12 @@ const LinksPage = () => {
               <div
                 className={styles.secondLevelPill}
                 onClick={() => {
+                  event({
+                    action: "click",
+                    params: {
+                      event_label: "data_renaissance_apple",
+                    },
+                  });
                   window.open(
                     "https://music.apple.com/us/album/data-renaissance/1617104783"
                   );
@@ -311,6 +373,12 @@ const LinksPage = () => {
               <div
                 className={styles.secondLevelPill}
                 onClick={() => {
+                  event({
+                    action: "click",
+                    params: {
+                      event_label: "data_renaissance_youtube",
+                    },
+                  });
                   window.open("https://www.youtube.com/watch?v=hBYzJltMT7k");
                 }}
               >
@@ -367,7 +435,15 @@ const LinksPage = () => {
               ? "center"
               : "flex-start",
         }}
-        onClick={() => window.open(getUrl(), "_blank")}
+        onClick={() => {
+          event({
+            action: "click",
+            params: {
+              event_label: `socials:${getUrl()}`,
+            },
+          });
+          window.open(getUrl(), "_blank");
+        }}
       >
         {getRightSideImage()}
         <FadeIn lines={[{ text: text }]} delay={0} />
