@@ -7,7 +7,8 @@ import { useState } from "react";
 import AnimatedLogo from "../components/AnimatedLogo";
 import useWindowSize from "../hooks/useWindowSize";
 import useTimeout from "../hooks/useTimeout";
-import { Analytics } from '@vercel/analytics/react';
+import Script from "next/script";
+
 const LOADING_TIME = 1100;
 
 function CustomApp({ Component, pageProps, router }: AppProps): JSX.Element {
@@ -124,7 +125,15 @@ function CustomApp({ Component, pageProps, router }: AppProps): JSX.Element {
           transition: opacity 300ms;
         }
       `}</style>
-      <Analytics />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-BXL1407J5G');
+        `}
+      </Script>
     </Layout>
   );
 }
