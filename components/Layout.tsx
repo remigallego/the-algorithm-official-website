@@ -3,6 +3,7 @@ import Head from "next/head";
 import Header from "./Header";
 import Socials from "./Socials";
 import { HEADER_HEIGHT } from "../vars";
+import Script from "next/script";
 
 type Props = {
   children?: ReactNode;
@@ -31,6 +32,19 @@ const Layout = ({
         <link rel="stylesheet" href="/fonts/fonts.css" />
         <script src="https://unpkg.com/zdog@1/dist/zdog.dist.min.js"></script>
       </Head>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-LG38264ZVP"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-LG38264ZVP');
+        `}
+      </Script>{" "}
       {!isLinks && (
         <div
           style={{

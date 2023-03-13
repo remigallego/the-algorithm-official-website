@@ -18,7 +18,6 @@ import YoutubeLogoColor from "./assets/youtube.png";
 import SteamLogo from "./assets/steam.png";
 import Discord from "./assets/discord.png";
 import FadeIn from "../../components/Animations/FadeIn";
-import Script from "next/script";
 
 const TheLastSpellLinks = {
   Spotify:
@@ -395,19 +394,6 @@ const LinksPage = () => {
         {renderDefaultPill("follow ./instagram")}
         {renderDefaultPill("subscribe ./youtube")}
       </div>
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-LG38264ZVP"
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){window.dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'G-LG38264ZVP');
-        `}
-      </Script>
     </div>
   );
 };
