@@ -8,7 +8,7 @@ import AnimatedLogo from "../components/AnimatedLogo";
 import useWindowSize from "../hooks/useWindowSize";
 import useTimeout from "../hooks/useTimeout";
 
-const LOADING_TIME = 1300;
+const LOADING_TIME = 1100;
 
 function CustomApp({ Component, pageProps, router }: AppProps): JSX.Element {
   const [loading, setLoading] = useState(true);
@@ -97,11 +97,11 @@ function CustomApp({ Component, pageProps, router }: AppProps): JSX.Element {
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
-              height: windowSize.height,
+              height: windowSize.height ?? 200 - 200,
               width: windowSize.width,
             }}
           >
-            <AnimatedLogo shouldFadeAt={LOADING_TIME - 100} />
+            <AnimatedLogo shouldFadeAt={LOADING_TIME - 100} enableTransform />
           </div>
         ) : (
           <Component {...pageProps} key={router.route} />

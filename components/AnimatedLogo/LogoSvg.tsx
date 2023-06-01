@@ -14,7 +14,7 @@ interface Props {
   children?: React.ReactNode;
   style: React.CSSProperties;
   pressed: boolean;
-  shouldFadeAt: number;
+  shouldFadeAt?: number;
 }
 
 const LogoSvg: FunctionComponent<Props> = (props) => {
@@ -33,8 +33,8 @@ const LogoSvg: FunctionComponent<Props> = (props) => {
   }, 0);
 
   useTimeout(() => {
-    setShouldFade(true);
-  }, props.shouldFadeAt);
+    if (props.shouldFadeAt) setShouldFade(true);
+  }, props.shouldFadeAt ?? 0);
 
   const animatedStroke = useSpring({
     strokeDasharray: randomInteger(650, 900),
@@ -54,6 +54,7 @@ const LogoSvg: FunctionComponent<Props> = (props) => {
         to: {
           strokeDasharray: randomInteger(40, 100),
         },
+        loop: { reverse: true },
         config: {
           friction: 170,
           clamp: true,
@@ -68,6 +69,7 @@ const LogoSvg: FunctionComponent<Props> = (props) => {
         to: {
           strokeDasharray: randomInteger(650, 900),
         },
+        loop: { reverse: true },
         /*  {
           friction: 144,
           clamp: true,
@@ -89,12 +91,13 @@ const LogoSvg: FunctionComponent<Props> = (props) => {
       ? useSpring({
           from: {
             "transform-origin": "center",
-            transform: "scale(1.11)",
+            transform: "scale(1.02)",
           },
           to: {
             "transform-origin": "center",
-            transform: "scale(0.8)",
+            transform: "scale(0.90)",
           },
+          loop: { reverse: true, delay: 3000 },
           config: { tension: 100 },
           delay: props.delay * 0.2,
           reset: resetScale,
@@ -102,12 +105,13 @@ const LogoSvg: FunctionComponent<Props> = (props) => {
       : useSpring({
           from: {
             "transform-origin": "center",
-            transform: "scale(0.84)",
+            transform: "scale(0.94)",
           },
           to: {
             "transform-origin": "center",
             transform: "scale(1)",
           },
+          loop: { reverse: true, delay: 3000 },
           config: { tension: 100 },
           delay: props.delay * 0.2,
           reset: resetScale,
@@ -194,25 +198,6 @@ const LogoSvg: FunctionComponent<Props> = (props) => {
           }
           100% {
             transform: scale(1);
-          }
-        }
-        @keyframes dashAnim {
-          0% {
-            stroke-dasharray: 800;
-          }
-          50% {
-            stroke-dasharray: 100;
-          }
-          100% {
-            stroke-dasharray: 1200;
-          }
-        }
-        @keyframes dashAnimforwards {
-          0% {
-            stroke-dashoffset: 0;
-          }
-          100% {
-            stroke-dashoffset: 100;
           }
         }
       `}</style>

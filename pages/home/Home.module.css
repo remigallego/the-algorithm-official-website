@@ -1,0 +1,65 @@
+.listenContainer {
+  background-color: #11f24a;
+  animation: 0.3s gentleblink infinite;
+  box-shadow: 5px 5px 0px rgb(2, 240, 125);
+  padding: 3px 20px;
+  border-radius: 3px;
+  transition: animation 0.2s;
+  cursor: pointer;
+  position: absolute;
+}
+.blue {
+  background-color: rgb(2, 184, 240);
+  box-shadow: 5px 5px 0px rgb(2, 161, 240);
+}
+
+.listenContainer:hover {
+  animation: 0.1s gentleblink infinite;
+}
+.terminalContainer {
+  width: 80vw;
+}
+
+/* Animation */
+
+@media (min-width: 1024px) {
+  .terminalContainer {
+    width: 40%;
+    transform: translate(-20vw, -70%);
+    position: absolute;
+  }
+
+  .listenContainer {
+    position: absolute;
+    transform: translate(0vw, 80%);
+    display: block;
+  }
+}
+
+@media (min-width: 1600px) {
+  .terminalContainer {
+    width: 50%;
+    transform: translate(-20%, -100%);
+    position: absolute;
+  }
+
+  .listenContainer {
+    position: absolute;
+    transform: translate(0vw, 80%);
+  }
+  .blue {
+    margin-top: 8px;
+  }
+}
+
+@keyframes gentleblink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,258 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pillsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 12px;
+  margin-bottom: 60px;
+}
+
+.pillDimensions {
+  max-width: 588px;
+  min-height: 56px;
+  width: calc(80% + 40px);
+  border-radius: 20px;
+  transition: all 0.1s ease-in-out;
+  position: relative;
+}
+
+.hardBlinkAnim {
+  animation: hardblink 1.2s infinite;
+}
+
+.pillContainer {
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  max-width: 548px;
+  min-height: 56px;
+  width: 80%;
+  background-color: white;
+
+  gap: 18px;
+
+  padding: 0px 20px;
+
+  font-family: "Varela Round", sans-serif;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.1s ease-in-out, background-color 0.16s linear;
+}
+
+.pillContainer > p {
+  font-family: "NeueMachina", sans-serif;
+}
+
+.blackPill {
+  background-color: rgb(2, 2, 5);
+  gap: 0px;
+}
+
+.pillDimensions:hover {
+}
+
+.pillContainer:hover {
+  transform: scale(1.05);
+  background-color: rgb(241, 241, 255);
+}
+
+.blackPill:hover {
+  transform: scale(1.05);
+  background-color: rgb(2, 2, 215);
+}
+
+.collapsibleSection {
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-top: 0px;
+  height: 0%;
+  animation: openAnim 0.2s ease-in-out forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 26px;
+  margin-top: -20px;
+  padding-bottom: 20px;
+  border-bottom-left-radius: 22px;
+  border-bottom-right-radius: 22px;
+}
+
+.hoverable:hover {
+  transform: scale(1.05);
+  animation: coverHover 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.collapsibleSection > p {
+  color: white;
+}
+
+.collapsibleSection > h1 {
+  color: white;
+  font-family: "NeueMachina", sans-serif;
+  font-size: 16px;
+  opacity: 0.8;
+  margin: 22px 0px 32px;
+}
+
+.secondLevelPill {
+  background-color: #cfbcff;
+  padding: 12px;
+  width: 60%;
+  border-radius: 10px;
+  font-family: "NeueMachina", sans-serif;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+  transition: all 0.1s;
+  font-weight: 700;
+  color: rgb(4, 4, 118);
+  justify-content: flex-start;
+  position: relative;
+
+  cursor: pointer;
+}
+
+.secondLevelPill > * {
+}
+
+.secondLevelPill:hover {
+  transform: scale(1.05);
+}
+
+.listen-container {
+  background-color: #11f24a;
+  animation: 0.3s gentleblink infinite;
+  box-shadow: 4px 4px 0px rgba(2, 240, 125, 0.4);
+  transform: translateY(-1px);
+  padding: 3px 12px;
+  border-radius: 3px;
+  transition: animation 0.2s;
+  cursor: pointer;
+  position: absolute;
+  right: 0px;
+}
+
+.listen-container > .bold-text {
+  font-size: 14px;
+  color: white;
+}
+
+.listen-container:hover {
+  animation: 0.1s gentleblink infinite;
+}
+
+.latestALbumContainer {
+  position: absolute;
+
+  top: 0px;
+  /*   justify-content: center;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  height:  */
+}
+
+.latestAlbumText {
+  font-size: 2px;
+}
+
+.latestAlbum {
+  font-size: 50px;
+  position: absolute;
+
+  top: 70%;
+  left: 35%;
+  width: 400px;
+  transform: translate(-50%, -50%);
+
+  color: rgb(0, 21, 255);
+  text-shadow: 2px 2px 22px rgb(255, 255, 255);
+
+  z-index: 2;
+  font-family: "NeueMachina", sans-serif;
+  font-weight: 700;
+}
+
+.pillsContainer > h1 {
+  font-size: 16px;
+  font-family: "NeueMachina", sans-serif;
+  font-weight: 00;
+  color: rgba(243, 244, 255, 0.632);
+  margin-top: 6px;
+}
+
+@keyframes hardblink {
+  0% {
+    filter: brightness(1);
+    box-shadow: 2px 2px 22px rgba(244, 244, 244, 0);
+    transform: scale(1);
+  }
+  24% {
+    transform: scale(1.014);
+    filter: brightness(1.6);
+    box-shadow: 2px 2px 22px rgba(244, 244, 244, 0.1);
+  }
+  100% {
+    box-shadow: 2px 2px 22px rgba(244, 244, 244, 0);
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+@keyframes gentleblink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes coverHover {
+  0% {
+    filter: brightness(1);
+  }
+  24% {
+    filter: brightness(1.67);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+.logoContainer {
+  height: 240px;
+  min-width: 400px;
+  max-width: 1100px;
+  width: 150%;
+  margin-bottom: 70px;
+  margin-top: -220px;
+}
+
+@media (max-width: 550px) {
+  .logoContainer {
+    width: 190%;
+    margin-top: -170px;
+    margin-bottom: 90px;
+  }
+}
+
+@media (min-width: 551px) {
+  .logoContainer {
+    margin-top: -170px;
+    margin-bottom: 150px;
+  }
+}

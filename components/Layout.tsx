@@ -3,6 +3,7 @@ import Head from "next/head";
 import Header from "./Header";
 import Socials from "./Socials";
 import { HEADER_HEIGHT } from "../vars";
+import { GoogleAnalytics } from "nextjs-google-analytics";
 
 type Props = {
   children?: ReactNode;
@@ -13,6 +14,15 @@ const Layout = ({
   children,
   title = "The Algorithm Official Website",
 }: Props) => {
+  const getPagePath = () => {
+    if (typeof window === "undefined") {
+      return "";
+    }
+    return window.location.pathname;
+  };
+
+  const isLinks = getPagePath() === "/links";
+
   return (
     <div>
       <Head>
@@ -22,22 +32,26 @@ const Layout = ({
         <link rel="stylesheet" href="/fonts/fonts.css" />
         <script src="https://unpkg.com/zdog@1/dist/zdog.dist.min.js"></script>
       </Head>
+      <GoogleAnalytics trackPageViews gaMeasurementId="G-LG38264ZVP" />
+      {!isLinks && (
+        <div
+          style={{
+            position: "fixed",
+            width: "100%",
+          }}
+        >
+          <Header />
+        </div>
+      )}
       <div
-        style={{
-          position: "fixed",
-          width: "100%",
-        }}
-      >
-        <Header />
-      </div>
-      <div
+        className="wrapper"
         style={{
           paddingTop: HEADER_HEIGHT,
         }}
       >
         {children}
       </div>
-      <Socials />
+      {!isLinks && <Socials />}
       <style global jsx>{`
         .social {
           cursor: pointer;
@@ -47,13 +61,18 @@ const Layout = ({
         }
         body {
           user-select: none;
-          background: rgb(5, 5, 54);
+          background-color: rgb(5, 5, 54);
           height: 100%;
           margin: 0;
           background-repeat: no-repeat;
           background-attachment: fixed;
           overflow-x: hidden;
-          overflow-y: hidden;
+          overflow-y: ${getPagePath() === "/links" ? "scroll" : "hidden"};
+          animation: wheelHueColor 16s infinite linear;
+        }
+
+        .wrapper {
+          overflow-x: hidden;
         }
         .bold-text,
         .light-text,
@@ -125,6 +144,34 @@ const Layout = ({
           }
           100% {
             transform: translateY(0);
+          }
+        }
+
+        @keyframes wheelHueColor {
+          from,
+          to {
+            background-color: rgb(5, 5, 54);
+          }
+          12% {
+            background-color: rgb(7, 7, 67);
+          }
+          25% {
+            background-color: rgb(8, 8, 76);
+          }
+          37% {
+            background-color: rgb(9, 9, 101);
+          }
+          50% {
+            background-color: rgb(9, 9, 101);
+          }
+          65% {
+            background-color: rgb(9, 9, 101);
+          }
+          75% {
+            background-color: rgb(8, 8, 76);
+          }
+          87% {
+            background-color: rgb(7, 7, 67);
           }
         }
       `}</style>
