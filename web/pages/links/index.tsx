@@ -40,8 +40,10 @@ const TheLastSpellLinks = {
     "https://open.spotify.com/album/4NHQJlyteZwShk67OEe71W?si=pr-6oupgSDSkQH3Q8RAAfg",
   Apple:
     "https://music.apple.com/us/album/the-last-spell-original-game-soundtrack/1675871681",
-  Bandcamp: "https://kidkatanarecords.bandcamp.com/",
-  Youtube: "https://www.youtube.com/channel/UCo5yyv5VD-jgizR97b695zA",
+  Bandcamp:
+    "https://kidkatanarecords.bandcamp.com/album/the-last-spell-original-game-soundtrack",
+  Youtube:
+    "https://www.youtube.com/watch?v=ZWkgezteauA&t=210s&pp=ygUZdGhlIGxhc3Qgc3BlbGwga2lkIGthdGFuYQ%3D%3D",
   Steam: "https://store.steampowered.com/bundle/21005/Headbanger_Pack/",
 };
 
@@ -180,14 +182,22 @@ const LinksPage = () => {
               cursor: "pointer",
               objectFit: "cover",
             }}
-            onClick={() => {
+            onClick={(e) => {
               trackEvent({
                 action: "click",
                 params: {
                   event_label: "the_last_spell",
                 },
               });
-              window.open("https://idol-io.link/TheLastSpell", "_blank");
+              // window.open("https://idol-io.link/TheLastSpell", "_blank");
+              e.preventDefault();
+              e.stopPropagation();
+              if (isOpen === null || isOpen !== "THE LAST SPELL") {
+                executeScroll(theLastSpellRef);
+                setIsOpen("THE LAST SPELL");
+              } else {
+                setIsOpen(null);
+              }
             }}
           />
           {isOpen === "THE LAST SPELL" && (
@@ -298,7 +308,7 @@ const LinksPage = () => {
                   event_label: "toggle_data_renaissance",
                 },
               });
-              if (!isOpen) {
+              if (!isOpen || isOpen !== "DATA RENAISSANCE") {
                 executeScroll(dataRenRef);
                 setIsOpen("DATA RENAISSANCE");
               } else {
