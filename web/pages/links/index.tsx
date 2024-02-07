@@ -18,7 +18,7 @@ import YoutubeLogoColor from "./assets/youtube.png";
 import SteamLogo from "./assets/steam.png";
 import Discord from "./assets/discord.png";
 import FadeIn from "../../components/Animations/FadeIn";
-import { event } from "nextjs-google-analytics";
+// import { event } from "nextjs-google-analytics";
 
 export const trackEvent = ({
   action,
@@ -29,8 +29,10 @@ export const trackEvent = ({
     [key: string]: string | number | boolean | undefined | null;
   };
 }) => {
+  action;
+  params;
   // window.gtag("event", action, params);
-  event(action, params);
+  // event(action, params);
 };
 
 const TheLastSpellLinks = {
@@ -68,8 +70,17 @@ const LinksPage = () => {
           );
         }}
       >
-        <Image alt={""} src={DataRen} width={"100%"} height={"100%"} />
-        <LinksTerminal lines={["DATA RENAISSANCE", "VINYLS PREORDER"]} />
+        <Image
+          alt={""}
+          src={DataRen}
+          height={"100%"}
+          style={{
+            objectFit: "cover",
+            height: "20%",
+            width: "20%",
+          }}
+        />
+        <LinksTerminal lines={["DATA RENAISSANCE", "VINYLS"]} />
       </div>
     );
   };
@@ -86,11 +97,12 @@ const LinksPage = () => {
           <Image
             alt={""}
             src={Discord}
-            objectFit={"cover"}
             height={180}
             style={{
               borderRadius: 20,
               cursor: "pointer",
+              objectFit: "cover",
+              width: "100%",
             }}
             onClick={(e) => {
               e.preventDefault();
@@ -118,6 +130,32 @@ const LinksPage = () => {
           <Image
             alt={""}
             src={Merch}
+            height={180}
+            style={{
+              borderRadius: 20,
+              cursor: "pointer",
+              objectFit: "cover",
+              width: "100%",
+            }}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+
+              trackEvent({
+                action: "click",
+                params: {
+                  event_label: "merch_store",
+                },
+              });
+              window.open(
+                "https://fixtstore.com/collections/the-algorithm",
+                "_blank"
+              );
+            }}
+          />
+          {/*  <Image
+            alt={""}
+            src={Merch}
             objectFit={"cover"}
             height={170}
             style={{
@@ -139,7 +177,7 @@ const LinksPage = () => {
                 "_blank"
               );
             }}
-          />
+          /> */}
         </div>
       );
     }
@@ -157,10 +195,11 @@ const LinksPage = () => {
           <Image
             alt={""}
             src={TheLastSpell}
-            objectFit={"cover"}
             style={{
               borderRadius: 20,
+              width: "100%",
               cursor: "pointer",
+              objectFit: "cover",
             }}
             onClick={() => {
               trackEvent({
@@ -190,7 +229,6 @@ const LinksPage = () => {
                 src="https://open.spotify.com/embed/album/4NHQJlyteZwShk67OEe71W?utm_source=generator"
                 width="100%"
                 height="352"
-                frameBorder="0"
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                 loading="lazy"
               ></iframe>
@@ -273,10 +311,11 @@ const LinksPage = () => {
           <Image
             alt={""}
             src={DataRen}
-            objectFit={"cover"}
             style={{
               borderRadius: 20,
               cursor: "pointer",
+              width: "100%",
+              objectFit: "cover",
             }}
             height={200}
             onClick={(e) => {

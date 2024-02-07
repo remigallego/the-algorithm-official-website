@@ -1,9 +1,9 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import Head from "next/head";
 import Header from "./Header";
 import Socials from "./Socials";
 import { HEADER_HEIGHT } from "../vars";
-import { GoogleAnalytics } from "nextjs-google-analytics";
+// import { GoogleAnalytics } from "nextjs-google-analytics";
 
 type Props = {
   children?: ReactNode;
@@ -14,14 +14,11 @@ const Layout = ({
   children,
   title = "The Algorithm Official Website",
 }: Props) => {
-  const getPagePath = () => {
-    if (typeof window === "undefined") {
-      return "";
-    }
-    return window.location.pathname;
-  };
+  const [pagePath, setPagePath] = useState("");
 
-  const isLinks = getPagePath() === "/links";
+  useEffect(() => {
+    setPagePath(window.location.pathname);
+  }, []);
 
   return (
     <div>
@@ -32,8 +29,7 @@ const Layout = ({
         <link rel="stylesheet" href="/fonts/fonts.css" />
         <script src="https://unpkg.com/zdog@1/dist/zdog.dist.min.js"></script>
       </Head>
-      <GoogleAnalytics trackPageViews gaMeasurementId="G-LG38264ZVP" />
-      {!isLinks && (
+      {pagePath !== "/links" && (
         <div
           style={{
             position: "fixed",
@@ -51,7 +47,7 @@ const Layout = ({
       >
         {children}
       </div>
-      {!isLinks && <Socials />}
+      {pagePath !== '/links' && <Socials />}
       <style global jsx>{`
         .social {
           cursor: pointer;
@@ -67,7 +63,7 @@ const Layout = ({
           background-repeat: no-repeat;
           background-attachment: fixed;
           overflow-x: hidden;
-          overflow-y: ${getPagePath() === "/links" ? "scroll" : "hidden"};
+          overflow-y: ${pagePath === "/links" ? "scroll" : "hidden"};
           animation: wheelHueColor 16s infinite linear;
         }
 

@@ -33,7 +33,7 @@ const Header: FunctionComponent<Props> = () => {
   };
   return (
     <>
-      <header>
+      <div>
         <nav>
           <div className="container">
             <div className="logo-container">
@@ -42,7 +42,7 @@ const Header: FunctionComponent<Props> = () => {
             {renderMenu()}
           </div>
         </nav>
-      </header>
+      </div>
       <style jsx>{`
         header {
         }
