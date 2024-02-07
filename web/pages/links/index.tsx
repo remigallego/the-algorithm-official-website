@@ -85,6 +85,44 @@ const LinksPage = () => {
     );
   };
 
+  const renderMerch = () => {
+    return (
+      <div
+        className={cx(styles.pillDimensions, {
+          [styles.hoverable]: !isOpen,
+        })}
+        style={{ margin: "0px 0px -4px" }}
+      >
+        <Image
+          alt={""}
+          src={Merch}
+          height={180}
+          style={{
+            borderRadius: 20,
+            cursor: "pointer",
+            objectFit: "cover",
+            width: "100%",
+          }}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            trackEvent({
+              action: "click",
+              params: {
+                event_label: "merch_store",
+              },
+            });
+            window.open(
+              "https://fixtstore.com/collections/the-algorithm",
+              "_blank"
+            );
+          }}
+        />
+      </div>
+    );
+  };
+
   const renderImageBackgroundPill = (text: string) => {
     if (text === "DISCORD") {
       return (
@@ -120,66 +158,7 @@ const LinksPage = () => {
       );
     }
     if (text === "MERCH") {
-      return (
-        <div
-          className={cx(styles.pillDimensions, {
-            [styles.hoverable]: !isOpen,
-          })}
-          style={{ margin: "0px 0px -4px" }}
-        >
-          <Image
-            alt={""}
-            src={Merch}
-            height={180}
-            style={{
-              borderRadius: 20,
-              cursor: "pointer",
-              objectFit: "cover",
-              width: "100%",
-            }}
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-
-              trackEvent({
-                action: "click",
-                params: {
-                  event_label: "merch_store",
-                },
-              });
-              window.open(
-                "https://fixtstore.com/collections/the-algorithm",
-                "_blank"
-              );
-            }}
-          />
-          {/*  <Image
-            alt={""}
-            src={Merch}
-            objectFit={"cover"}
-            height={170}
-            style={{
-              borderRadius: 20,
-              cursor: "pointer",
-            }}
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-
-              trackEvent({
-                action: "click",
-                params: {
-                  event_label: "merch_store",
-                },
-              });
-              window.open(
-                "https://fixtstore.com/collections/the-algorithm",
-                "_blank"
-              );
-            }}
-          /> */}
-        </div>
-      );
+      return renderMerch();
     }
 
     if (text === "THE LAST SPELL") {
@@ -209,14 +188,6 @@ const LinksPage = () => {
                 },
               });
               window.open("https://idol-io.link/TheLastSpell", "_blank");
-              /*    e.preventDefault();
-              e.stopPropagation();
-              if (isOpen === null) {
-                executeScroll(theLastSpellRef);
-                setIsOpen("THE LAST SPELL");
-              } else {
-                setIsOpen(null);
-              } */
             }}
           />
           {isOpen === "THE LAST SPELL" && (
