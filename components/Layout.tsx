@@ -67,7 +67,7 @@ const Layout = ({
           background-attachment: fixed;
           overflow-x: hidden;
           overflow-y: ${getPagePath() === "/links" ? "scroll" : "hidden"};
-          background-color: rgb(5, 15, 74);
+          background-color: rgb(5, 15, 52);
         }
 
         .wrapper {
