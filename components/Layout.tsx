@@ -61,14 +61,13 @@ const Layout = ({
         }
         body {
           user-select: none;
-          background-color: rgb(5, 5, 54);
           height: 100%;
           margin: 0;
           background-repeat: no-repeat;
           background-attachment: fixed;
           overflow-x: hidden;
           overflow-y: ${getPagePath() === "/links" ? "scroll" : "hidden"};
-          animation: wheelHueColor 16s infinite linear;
+          background-color: rgb(5, 15, 74);
         }
 
         .wrapper {
@@ -147,33 +146,6 @@ const Layout = ({
           }
         }
 
-        @keyframes wheelHueColor {
-          from,
-          to {
-            background-color: rgb(5, 5, 54);
-          }
-          12% {
-            background-color: rgb(7, 7, 67);
-          }
-          25% {
-            background-color: rgb(8, 8, 76);
-          }
-          37% {
-            background-color: rgb(9, 9, 101);
-          }
-          50% {
-            background-color: rgb(9, 9, 101);
-          }
-          65% {
-            background-color: rgb(9, 9, 101);
-          }
-          75% {
-            background-color: rgb(8, 8, 76);
-          }
-          87% {
-            background-color: rgb(7, 7, 67);
-          }
-        }
       `}</style>
     </div>
   );
