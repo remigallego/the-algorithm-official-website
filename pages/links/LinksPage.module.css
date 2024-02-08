@@ -184,11 +184,12 @@
 }
 
 .pillsContainer > h1 {
-  font-size: 16px;
+  font-size: 24px;
   font-family: "NeueMachina", sans-serif;
   font-weight: 00;
-  color: rgba(243, 244, 255, 0.632);
-  margin-top: 6px;
+  color: rgba(243, 244, 255, 0.9);
+  margin-top: 24px;
+  margin-bottom: 24px;
 }
 
 @keyframes hardblink {
