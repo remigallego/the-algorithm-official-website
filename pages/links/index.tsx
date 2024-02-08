@@ -139,10 +139,10 @@ const LinksPage = () => {
             alt={""}
             src={Discord}
             height={180}
+            objectFit="cover"
             style={{
               borderRadius: 20,
               cursor: "pointer",
-              objectFit: "cover",
               width: "100%",
             }}
             onClick={(e) => {
