@@ -28,7 +28,7 @@ const ScrollContainer: FunctionComponent<{
   const viewportRef = useRef(null);
   const [currentHeight, setCurrentHeight] = useState(window.innerHeight);
 
-  const getCurrentHeight = useCallback((entries) => {
+  const getCurrentHeight = useCallback((entries: any) => {
     for (let entry of entries) {
       const crx = entry.contentRect;
       setCurrentHeight(crx.height);
