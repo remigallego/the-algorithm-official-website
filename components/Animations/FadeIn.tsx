@@ -59,6 +59,7 @@ const Char: FunctionComponent<{
           offset * 0.85
         }s ease-out forwards infinite`, */
         // color: content === character ? "#11f24a" : "#91ffad",
+        fontSize: 18,
         fontWeight: bold ? "bold" : "normal",
       }}
     >

@@ -487,10 +487,10 @@ const LinksPage = () => {
         <h1>̵s̷o̴cia̵l̶s</h1>
         {renderImageBackgroundPill("DISCORD")}
         {renderDefaultPill("░░░ Curated Spotify Playlists ░░░")}
-        {renderDefaultPill("follow ./twitter")}
-        {renderDefaultPill("like ./facebook")}
         {renderDefaultPill("follow ./instagram")}
         {renderDefaultPill("subscribe ./youtube")}
+        {renderDefaultPill("follow ./twitter")}
+        {renderDefaultPill("like ./facebook")}
       </div>
     </div>
   );
