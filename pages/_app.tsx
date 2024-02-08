@@ -14,11 +14,14 @@ function CustomApp({ Component, pageProps, router }: AppProps): JSX.Element {
   const [loading, setLoading] = useState(true);
   const windowSize = useWindowSize();
 
+  if (typeof window === "undefined") {
+    return <div></div>;
+  }
   useTimeout(() => {
     setLoading(false);
   }, LOADING_TIME);
 
-  router?.events?.on("routeChangeStart", () => {
+  router.events.on("routeChangeStart", () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
