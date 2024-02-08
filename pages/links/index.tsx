@@ -75,9 +75,10 @@ const LinksPage = () => {
         <Image
           alt={""}
           src={DataRen}
-          height={"100%"}
+          height={'100%'}
+          width={'100%'}
+          objectFit="cover"
           style={{
-            objectFit: "cover",
             height: "20%",
             width: "20%",
           }}
@@ -292,11 +293,11 @@ const LinksPage = () => {
           <Image
             alt={""}
             src={DataRen}
+            objectFit="cover"
             style={{
               borderRadius: 20,
               cursor: "pointer",
               width: "100%",
-              objectFit: "cover",
             }}
             height={200}
             onClick={(e) => {
