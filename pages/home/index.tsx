@@ -11,10 +11,10 @@ import {
   SMALL_BREAKPOINT,
 } from "../../vars";
 import Cover from "./Cover";
-import styles from "./Home.module.css";
+import LinksPage from "../links";
 
 const IndexPage: NextPage = () => {
-  const [showLogo, setShowLogo] = useState(false);
+  /* const [showLogo, setShowLogo] = useState(false);
   const windowSize = useWindowSize();
   const ref = useRef(null);
 
@@ -59,7 +59,9 @@ const IndexPage: NextPage = () => {
                   marginTop: 48,
                 }}
               >
-                <div className={[styles.listenContainer, styles.blue].join(" ")}>
+                <div
+                  className={[styles.listenContainer, styles.blue].join(" ")}
+                >
                   <p className={"bold-text"}>buy</p>
                 </div>
               </div>
@@ -69,6 +71,8 @@ const IndexPage: NextPage = () => {
       </div>
     );
   };
+ */
+  return <LinksPage />;
 
   return (
     <div ref={ref} className="container" onMouseMove={() => {}}>

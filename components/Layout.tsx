@@ -1,7 +1,6 @@
 import React, { ReactNode } from "react";
 import Head from "next/head";
 import Header from "./Header";
-import Socials from "./Socials";
 import { HEADER_HEIGHT } from "../vars";
 import { GoogleAnalytics } from "nextjs-google-analytics";
 
@@ -51,7 +50,6 @@ const Layout = ({
       >
         {children}
       </div>
-      {!isLinks && <Socials />}
       <style global jsx>{`
         .social {
           cursor: pointer;
@@ -66,7 +64,6 @@ const Layout = ({
           background-repeat: no-repeat;
           background-attachment: fixed;
           overflow-x: hidden;
-          overflow-y: ${getPagePath() === "/links" ? "scroll" : "hidden"};
           background-color: rgb(5, 15, 52);
         }
 
