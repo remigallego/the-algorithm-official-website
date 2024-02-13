@@ -8,6 +8,10 @@ interface Props {
   lines: Line[];
   onFinish?: () => void;
   disableBlink?: boolean;
+  style: {
+    isBold?: boolean;
+    style?: any;
+  };
 }
 
 const flattenArray = (arr: any[]): any[] => {
@@ -34,7 +38,8 @@ const Char: FunctionComponent<{
   offset: number;
   bold: boolean;
   mouseOver: boolean;
-}> = ({ children: character, bold }) => {
+  style?: any;
+}> = ({ children: character, bold, style = {} }) => {
   const [content, setContent] = useState(randomCharacterOrSymbol());
 
   useTimeout(() => {
@@ -43,24 +48,15 @@ const Char: FunctionComponent<{
 
   useEffect(() => {
     setContent(randomCharacterOrSymbol());
-
-    /*    setTimeout(() => {
-      setContent(character);
-    }, offset * 1000); */
   }, [character]);
 
   return (
     <div
       className="char"
       style={{
-        /*   animation: `fadeIn 0s ${offset * 0.85}s ease-out forwards, ${
-          bold ? "blink" : ""
-        } ${mouseOver ? "0.1s" : "0.4s"} ${
-          offset * 0.85
-        }s ease-out forwards infinite`, */
-        // color: content === character ? "#11f24a" : "#91ffad",
         fontSize: 18,
         fontWeight: bold ? "bold" : "normal",
+        ...style,
       }}
     >
       {content}
@@ -90,15 +86,20 @@ const Char: FunctionComponent<{
   );
 };
 
-const FadeIn: FunctionComponent<Props> = ({ lines, delay }) => {
+const FadeIn: FunctionComponent<Props> = ({
+  lines,
+  delay,
+  style = {
+    isBold: false,
+    style: "",
+  },
+}) => {
   const [mouseOver, setMouseOver] = useState<string | null>(null);
-
-  const [randomNumber, setRandomNumber] = useState(0);
+  const [_, setRandomNumber] = useState(0);
 
   useEffect(() => {
     if (mouseOver) {
       setRandomNumber(randomInteger(0, 1020));
-      randomNumber;
     }
   }, [mouseOver]);
 
@@ -106,7 +107,7 @@ const FadeIn: FunctionComponent<Props> = ({ lines, delay }) => {
     <>
       {lines.map((line, index) => {
         const time = index * 0.1;
-        const isBold = line.action ? true : false;
+        const isBold = style.isBold || line.action ? true : false;
         return (
           <div onClick={() => line.action?.()}>
             <p
@@ -134,6 +135,7 @@ const FadeIn: FunctionComponent<Props> = ({ lines, delay }) => {
                     }
                     offset={offset}
                     bold={isBold}
+                    style={style.style}
                     mouseOver={mouseOver === line.text}
                   >
                     {char}

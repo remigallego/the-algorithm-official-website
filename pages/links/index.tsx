@@ -75,8 +75,8 @@ const LinksPage = () => {
         <Image
           alt={""}
           src={DataRen}
-          height={'100%'}
-          width={'100%'}
+          height={"100%"}
+          width={"100%"}
           objectFit="cover"
           style={{
             height: "20%",
@@ -431,6 +431,9 @@ const LinksPage = () => {
       if (text.includes("Curated Spotify")) {
         return "https://open.spotify.com/user/remifasol";
       }
+      if (text.includes("contact me")) {
+        return "mailto:remi.gallego@gmail.com";
+      }
     };
     const getRightSideImage = () => {
       if (text.includes("twitter")) {
@@ -453,9 +456,13 @@ const LinksPage = () => {
         className={styles.pillContainer}
         style={{
           justifyContent:
-            text === "░░░ Curated Spotify Playlists ░░░"
+            text === "░░░ Curated Spotify Playlists ░░░" ||
+            text === "contact me"
               ? "center"
               : "flex-start",
+          ...(text === "contact me" && {
+            backgroundColor: "rgb(182, 255, 241)",
+          }),
         }}
         onClick={() => {
           trackEvent({
@@ -468,7 +475,20 @@ const LinksPage = () => {
         }}
       >
         {getRightSideImage()}
-        <FadeIn lines={[{ text: text }]} delay={0} />
+        <FadeIn
+          style={
+            text === "contact me"
+              ? {
+                  isBold: true,
+                  style: {
+                    fontSize: 22,
+                  },
+                }
+              : {}
+          }
+          lines={[{ text: text }]}
+          delay={0}
+        />
       </div>
     );
   };
@@ -491,6 +511,8 @@ const LinksPage = () => {
         {renderDefaultPill("subscribe ./youtube")}
         {renderDefaultPill("follow ./twitter")}
         {renderDefaultPill("like ./facebook")}
+        <h1>c̶o̷n̶t̶a̶c̴t</h1>
+        {renderDefaultPill("contact me")}
       </div>
     </div>
   );
