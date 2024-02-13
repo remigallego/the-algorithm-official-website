@@ -1,6 +1,5 @@
 import React, { ReactNode } from "react";
 import Head from "next/head";
-import Header from "./Header";
 import { HEADER_HEIGHT } from "../vars";
 import { GoogleAnalytics } from "nextjs-google-analytics";
 
@@ -13,14 +12,14 @@ const Layout = ({
   children,
   title = "The Algorithm Official Website",
 }: Props) => {
-  const getPagePath = () => {
+  /*   const getPagePath = () => {
     if (typeof window === "undefined") {
       return "";
     }
     return window.location.pathname;
-  };
+  }; */
 
-  const isLinks = getPagePath() === "/links";
+  // const isLinks = getPagePath() === "/links";
 
   return (
     <div>
