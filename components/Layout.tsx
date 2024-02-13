@@ -32,7 +32,7 @@ const Layout = ({
         <script src="https://unpkg.com/zdog@1/dist/zdog.dist.min.js"></script>
       </Head>
       <GoogleAnalytics trackPageViews gaMeasurementId="G-LG38264ZVP" />
-      {!isLinks && (
+      {/*   {!isLinks && (
         <div
           style={{
             position: "fixed",
@@ -41,7 +41,7 @@ const Layout = ({
         >
           <Header />
         </div>
-      )}
+      )} */}
       <div
         className="wrapper"
         style={{
@@ -142,7 +142,6 @@ const Layout = ({
             transform: translateY(0);
           }
         }
-
       `}</style>
     </div>
   );
