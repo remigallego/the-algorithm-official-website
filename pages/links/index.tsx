@@ -506,7 +506,7 @@ const LinksPage = () => {
         {renderTerminalPill()}
         <h1>̵s̷o̴cia̵l̶s</h1>
         {renderImageBackgroundPill("DISCORD")}
-        {renderDefaultPill("░░░ Curated Spotify Playlists ░░░")}
+        {renderDefaultPill("Curated Spotify Playlists")}
         {renderDefaultPill("follow ./instagram")}
         {renderDefaultPill("subscribe ./youtube")}
         {renderDefaultPill("follow ./twitter")}
