@@ -138,7 +138,7 @@ const Terminal: FunctionComponent<Props> = ({ handleClose, albumId }) => {
                       isExiting && styles.terminalContentClose,
                     ].join(" ")}
                   >
-                    <FadeIn delay={delay} lines={lines} />
+                    <FadeIn delay={delay} lines={lines} style={{}} />
                   </div>
                 </div>
               </div>
