@@ -1,16 +1,9 @@
 import { NextPage } from "next";
-import React, { useEffect, useRef, useState } from "react";
-import FadeInBlink from "../../components/Animations/FadeInBlink";
-import HomeTerminal from "../../components/HomeTerminal";
+import React from "react";
+/* import HomeTerminal from "../../components/HomeTerminal";
 import useTimeout from "../../hooks/useTimeout";
-import useWindowSize from "../../hooks/useWindowSize";
-import {
-  HEADER_HEIGHT,
-  LARGE_BREAKPOINT,
-  MEDIUM_BREAKPOINT,
-  SMALL_BREAKPOINT,
-} from "../../vars";
-import Cover from "./Cover";
+import useWindowSize from "../../hooks/useWindowSize"; */
+
 import LinksPage from "../links";
 
 const IndexPage: NextPage = () => {
@@ -73,7 +66,7 @@ const IndexPage: NextPage = () => {
   };
  */
   return <LinksPage />;
-
+  /* 
   return (
     <div ref={ref} className="container" onMouseMove={() => {}}>
       {renderTerminal()}
@@ -156,7 +149,7 @@ const IndexPage: NextPage = () => {
           width: 80vw;
         }
 
-        /* Animation */
+        // Animation 
 
         @media (min-width: ${SMALL_BREAKPOINT}px) {
           .cover-container {
@@ -234,7 +227,7 @@ const IndexPage: NextPage = () => {
         }
       `}</style>
     </div>
-  );
+    ); */
 };
 
 export default IndexPage;
