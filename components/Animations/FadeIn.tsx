@@ -95,11 +95,12 @@ const FadeIn: FunctionComponent<Props> = ({
   },
 }) => {
   const [mouseOver, setMouseOver] = useState<string | null>(null);
-  const [_, setRandomNumber] = useState(0);
+  const [randomNumber, setRandomNumber] = useState(0);
 
   useEffect(() => {
     if (mouseOver) {
       setRandomNumber(randomInteger(0, 1020));
+      randomNumber;
     }
   }, [mouseOver]);
 
