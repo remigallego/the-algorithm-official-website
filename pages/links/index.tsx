@@ -461,7 +461,7 @@ const LinksPage = () => {
               ? "center"
               : "flex-start",
           ...(text === "contact me" && {
-            backgroundColor: "rgb(182, 255, 241)",
+            backgroundColor: "rgb(182, 255, 241, 0.1)",
           }),
         }}
         onClick={() => {
@@ -480,9 +480,7 @@ const LinksPage = () => {
             text === "contact me"
               ? {
                   isBold: true,
-                  style: {
-                    fontSize: 22,
-                  },
+                  style: { fontSize: 22, color: "white" },
                 }
               : {}
           }
