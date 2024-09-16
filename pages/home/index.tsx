@@ -1,19 +1,13 @@
 import { NextPage } from "next";
-import React, { useEffect, useRef, useState } from "react";
-import FadeInBlink from "../../components/Animations/FadeInBlink";
-import HomeTerminal from "../../components/HomeTerminal";
+import React from "react";
+/* import HomeTerminal from "../../components/HomeTerminal";
 import useTimeout from "../../hooks/useTimeout";
-import useWindowSize from "../../hooks/useWindowSize";
-import {
-  HEADER_HEIGHT,
-  LARGE_BREAKPOINT,
-  MEDIUM_BREAKPOINT,
-  SMALL_BREAKPOINT,
-} from "../../vars";
-import Cover from "./Cover";
+import useWindowSize from "../../hooks/useWindowSize"; */
+
+import LinksPage from "../links";
 
 const IndexPage: NextPage = () => {
-  const [showLogo, setShowLogo] = useState(false);
+  /* const [showLogo, setShowLogo] = useState(false);
   const windowSize = useWindowSize();
   const ref = useRef(null);
 
@@ -23,31 +17,43 @@ const IndexPage: NextPage = () => {
     setShowLogo(true);
   }, 800);
 
-  return (
-    <div ref={ref} className="container" onMouseMove={() => {}}>
-      <div className="terminal-container">
+  const onClickListen = () => {
+    window.open("http://found.ee/dataren", "_blank");
+  };
+  const onClickBuy = () => {
+    window.open(
+      "https://thealgorithm.bandcamp.com/album/data-renaissance",
+      "_blank"
+    );
+  };
+
+  const renderTerminal = () => {
+    return (
+      <div className={styles.terminalContainer}>
         <FadeInBlink delay={0.2}>
           <HomeTerminal lines={["NEW ALBUM OUT NOW", "DATA RENAISSANCE"]} />
           {(windowSize.width || 0) >= MEDIUM_BREAKPOINT && (
             <>
               {" "}
               <div
+                onClick={onClickListen}
                 style={{
                   position: "absolute",
                 }}
               >
-                <div className={"listen-container slide-and-fade-animation"}>
+                <div className={styles.listenContainer}>
                   <p className={"bold-text"}>listen</p>
                 </div>
               </div>
               <div
+                onClick={onClickBuy}
                 style={{
                   position: "absolute",
                   marginTop: 48,
                 }}
               >
                 <div
-                  className={"listen-container blue slide-and-fade-animation"}
+                  className={[styles.listenContainer, styles.blue].join(" ")}
                 >
                   <p className={"bold-text"}>buy</p>
                 </div>
@@ -56,9 +62,15 @@ const IndexPage: NextPage = () => {
           )}
         </FadeInBlink>
       </div>
-
+    );
+  };
+ */
+  return <LinksPage />;
+  /* 
+  return (
+    <div ref={ref} className="container" onMouseMove={() => {}}>
+      {renderTerminal()}
       <Cover showLogo={showLogo} />
-
       <div>
         {(windowSize.width || 0) < MEDIUM_BREAKPOINT && (
           <div
@@ -72,6 +84,7 @@ const IndexPage: NextPage = () => {
           >
             <FadeInBlink delay={0.4}>
               <div
+                onClick={onClickListen}
                 className={"listen-container slide-and-fade-animation"}
                 style={{
                   width: "60%",
@@ -82,6 +95,7 @@ const IndexPage: NextPage = () => {
                 <p className={"bold-text"}>listen</p>
               </div>
               <div
+                onClick={onClickBuy}
                 className={"listen-container blue slide-and-fade-animation"}
                 style={{
                   width: "60%",
@@ -135,7 +149,7 @@ const IndexPage: NextPage = () => {
           width: 80vw;
         }
 
-        /* Animation */
+        // Animation 
 
         @media (min-width: ${SMALL_BREAKPOINT}px) {
           .cover-container {
@@ -213,7 +227,7 @@ const IndexPage: NextPage = () => {
         }
       `}</style>
     </div>
-  );
+    ); */
 };
 
 export default IndexPage;

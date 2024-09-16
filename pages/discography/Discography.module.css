@@ -1,8 +1,113 @@
-.arrow {
-  font-size: 100px;
-  z-index: 2;
-  right: 0;
-  top: 50%;
-  position: absolute;
-  color: red;
+.container {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+  display: flex;
+  overflow: scroll;
+  padding: 0px 48px 48px;
+  box-sizing: border-box;
+  padding-top: 80px;
+  flex-direction: column;
+  align-items: center;
+}
+.rotate {
+  transform-origin: top left;
+  transform: rotate(-90deg);
+  overflow: hidden;
+}
+.container::-webkit-scrollbar,
+.rotate::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+@keyframes overlay {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+
+.albumContainer {
+  display: flex;
+  width: 40vw;
+  max-width: 500px;
+  justify-content: center;
+  margin-bottom: 48px;
+  align-items: flex-end;
+  flex-direction: column;
+  transform: rotate(90deg);
+}
+
+.textsContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  align-items: flex-end;
+  margin-bottom: 0px;
+}
+
+.title {
+  font-family: "NeueMachina";
+  font-size: 26px;
+  font-weight: bold;
+  text-align: right;
+  display: inline-block;
+  letter-spacing: 0.12em;
+  margin-bottom: 4px;
+  transition: color 0.2s ease-in-out;
+}
+
+.year {
+  font-size: 16px;
+  font-style: italic;
+  font-weight: lighter;
+  font-family: "NeueMachina";
+  color: white;
+  display: inline-block;
+  letter-spacing: 0.12em;
+}
+
+@media (min-width: 768px) {
+  .cover {
+    width: 40vw;
+    height: 40vw;
+  }
+  .albumContainer {
+    transform: rotate(0deg);
+  }
+
+  .imageRotate {
+    transform: rotateZ(90deg);
+  }
+}
+
+.cover {
+  background-size: cover;
+  width: 70vw;
+  height: 70vw;
+  max-width: 500px;
+  max-height: 500px;
+  border-radius: 5px;
+  transform: scale(1);
+  transition: transform 0.15s ease-in-out;
+  transition: background-color 2.15s ease-in-out;
+}
+
+.cover:hover {
+  cursor: pointer;
+  transform: scale(1.03);
+  animation: coverHover 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes coverHover {
+  0% {
+    filter: brightness(1);
+  }
+  24% {
+    filter: brightness(1.47);
+  }
+  100% {
+    filter: brightness(1);
+  }
 }

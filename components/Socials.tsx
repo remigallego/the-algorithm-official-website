@@ -20,22 +20,22 @@ const Socials: FunctionComponent<Props> = () => {
         <img
           className="social"
           src="./images/youtube.svg"
-          onClick={() => window.open("https://youtube.com")}
+          onClick={() => window.open("https://www.youtube.com/thealg0r1thm")}
         />
         <img
           className="social"
           src="./images/instagram.svg"
-          onClick={() => window.open("https://instagram.com")}
+          onClick={() => window.open("https://www.instagram.com/thealgorithm_/")}
         />
         <img
           className="social"
           src="./images/twitter.svg"
-          onClick={() => window.open("https://twitter.com")}
+          onClick={() => window.open("https://twitter.com/The_Algorithm")}
         />
         <img
           className="social"
           src="./images/facebook.svg"
-          onClick={() => window.open("https://facebook.com")}
+          onClick={() => window.open("https://www.facebook.com/theAlg0r1thm/")}
         />
       </FadeInBlink>
     </div>

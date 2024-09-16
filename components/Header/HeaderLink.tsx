@@ -26,6 +26,7 @@ const HeaderLink: FunctionComponent<Props> = (props) => {
           margin-right: 22px;
           text-decoration: none;
           align-self: flex-end;
+          font-size: 22px;
           opacity: 1;
         }
         .active {

@@ -1,41 +1,15 @@
 import Image from "next/image";
 import React, { FunctionComponent } from "react";
-import useMediaQueries from "../../hooks/useMediaQueries";
-import routes from "../../routes";
-import FadeInBlink from "../Animations/FadeInBlink";
-import HeaderLink from "./HeaderLink";
 
 interface Props {
   children?: React.ReactNode;
 }
 
 const Header: FunctionComponent<Props> = () => {
-  const { smallScreen } = useMediaQueries();
 
   const renderMenu = () => {
     return (
       <>
-        {!smallScreen && (
-          <div className="routes-container">
-            <FadeInBlink delay={1.4}>
-              <HeaderLink href={routes.home}>HOME</HeaderLink>
-              <HeaderLink href={"/merch"}>MERCH</HeaderLink>
-              <HeaderLink href={routes.discography}>DISCOGRAPHY</HeaderLink>
-              <HeaderLink href={routes.about}>ABOUT</HeaderLink>
-            </FadeInBlink>
-          </div>
-        )}
-        {smallScreen && (
-          <div className="routes-container">
-            <img
-              src={`./images/hamburger.png`}
-              style={{
-                width: 40,
-                height: 40,
-              }}
-            />
-          </div>
-        )}
         <style jsx>{`
           .routes-container {
             display: flex;
@@ -82,13 +56,13 @@ const Header: FunctionComponent<Props> = () => {
 
         .logo-container {
           z-index: 20;
-          width: 500px;
-          height: 300px;
+          width: 400px;
+          height: 220px;
           transition: transform 0.82s cubic-bezier(0.075, 0.82, 0.165, 1);
           animation: fadeInLight 2s 2.82s cubic-bezier(0.075, 0.82, 0.165, 1)
             forwards;
           position: relative;
-          top: calc(-150px);
+          top: calc(-110px);
           margin-bottom: -14px;
           position: absolute;
           opacity: 0;
